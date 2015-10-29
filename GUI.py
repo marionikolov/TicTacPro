@@ -1,4 +1,4 @@
-import pygame, math, sys, time
+import pygame, math, sys, time, random
 screen=pygame.display.set_mode((610, 610))
 clock = pygame.time.Clock()
 board=pygame.image.load("board.png")
@@ -17,8 +17,27 @@ def main():
     while count<9 and not isgamewon[0]:
         ev = pygame.event.get()
         for event in ev:
-            if event.type == pygame.MOUSEBUTTONUP:
-                pos = pygame.mouse.get_pos()
+            if turn:
+                if event.type == pygame.MOUSEBUTTONUP:
+                    pos = pygame.mouse.get_pos()
+                    valid=validmove(pos,used)
+                    if valid:
+                        drawbox(o,x,turn,pos,used)
+                        isgamewon=gamewon(used)
+                        count+=1
+                        print(isgamewon)
+                        if isgamewon[0]:
+                            print(isgamewon)
+                            drawline(wincombo)
+                            break
+                        turn=not turn
+                    else:
+                        pass
+                        print("no")
+            elif not turn:
+                posx = random.randint(10,600)
+                posy = random.randint(10,600)
+                pos = (posx, posy)
                 valid=validmove(pos,used)
                 if valid:
                     drawbox(o,x,turn,pos,used)
@@ -33,7 +52,7 @@ def main():
                 else:
                     pass
                     print("no")
-                    
+                
     if isgamewon[1]:
         if turn: winner="1"
         else: winner="2"
@@ -152,7 +171,7 @@ def drawbox(o,x,turn,pos,used):
             screen.blit(o,(410,410))
             used[8]="o"
             
-    turn=not turn
+    #turn=not turn
     pygame.display.flip()
     return used
 
