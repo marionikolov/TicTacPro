@@ -16,24 +16,25 @@ def print(text3):
     text = font.render(text3, 4, (255, 255, 255))
     screen.blit(text, (40,610))
     pygame.display.flip()
-    
-def main():
+
+''' 
+    The main() function starts an instance of the game. It has three parameters:
+    1. multi - (boolean) determines whether the instance of the game is one-player (False) or multiplayer (True);
+    2. difficulty - (string: "easy", "medium", "hard") determines the difficulty of the AI when playing a one-player game;
+    3. turn - (boolean) determines who goes first: X's (True) or O's (False). NB: AI always plays with O's.
+    Note to self: edit this to include value configuration when playing online.
+'''
+def main(multi, difficulty, turn):
     x=pygame.image.load('x.png')
     o=pygame.image.load('o.png')
     screen.blit(board,(0,0))
     used=[7,8,9,4,5,6,1,2,3]
     pygame.display.flip()
-    #add a function to detect whether you play against a computer or against a real player
-    auto = False #True for AI and false for against real player
-    #add function to determine difficulty when playing against computer
-    difficulty = "easy" # or "medium" or "hard"
-    #add function to determine the first move. Reece is responsible for writing that piece of code
-    turn=True
     count=0
     isgamewon=(False,9)
     while count<9 and not isgamewon[0]:
         ev = pygame.event.get()
-        if auto == False:
+        if multi:
             # code that allows two players to play
             for event in ev:
                 if event.type == pygame.MOUSEBUTTONUP:
@@ -50,11 +51,12 @@ def main():
                         turn=not turn
                     else:
                         pass
-                        print("NO")
-        elif auto:
+                        print("That is not a valid move.")
+        elif not multi:
             # code that allows player vs computer
             for event in ev:
                 if turn:
+                    # user move
                     if event.type == pygame.MOUSEBUTTONUP:
                         pos = pygame.mouse.get_pos()
                         valid=validmove(pos,used)
@@ -68,11 +70,19 @@ def main():
                             turn=not turn
                         else:
                             pass
-                            print("no")
+                            print("That is not a valid move.")
                 elif not turn:
-                    posx = random.randint(10,600)
-                    posy = random.randint(10,600)
-                    pos = (posx, posy)
+                    # AI's move
+                    if difficulty == "easy":
+                        posx = random.randint(10,600)
+                        posy = random.randint(10,600)
+                        pos = (posx, posy)
+                    elif difficulty == "medium":
+                        #add code here, V
+                        print("medium")
+                    elif difficulty == "hard":
+                        #add code here, V
+                        print("hard")
                     valid=validmove(pos,used)
                     if valid:
                         drawbox(o,x,turn,pos,used)
@@ -84,7 +94,6 @@ def main():
                         turn=not turn
                     else:
                         pass
-                        print("no")
                     
     if count!=9:
         if turn: winner="1"
@@ -286,5 +295,4 @@ def drawline(wincombo,turn):
         time.sleep(0.5)
 
 if __name__=="__main__":
-    
-    main()
+    main(False, easy, True)
