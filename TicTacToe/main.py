@@ -8,8 +8,6 @@ screen=pygame.display.set_mode((610, 650))
 clock = pygame.time.Clock()
 rick=pygame.image.load("rick.png")
 board=pygame.image.load("board.png")
-x=pygame.image.load('x.png')
-o=pygame.image.load('o.png')
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
 #all sound files from sounddogs.com royalty free and some editied by me
 special=pygame.mixer.Sound("special.wav")
@@ -25,6 +23,7 @@ from offline1p import *
 from online import *
 from achievements import *
 from settings import *
+from firstgo import *
 
 def mainmenu():
     #needs a GUI, just the concept
@@ -42,11 +41,14 @@ def mainmenu():
             else:
                 print("That's not an option")
         if choice=="1":
-            online()
+            whosturn=chooseturn()
+            online(whosturn)
         elif choice=="2":
-            offline1p
+            whosturn=random.choice([True, False])
+            offline1p("easy",whosturn)
         elif choice=="3":
-            offline2p()
+            whosturn=chooseturn()
+            offline2p(whosturn)
         elif choice=="4":
             achievements()
         elif choice=="5":

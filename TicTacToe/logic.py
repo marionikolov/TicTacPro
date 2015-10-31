@@ -35,7 +35,6 @@ def gamewon(used):
     elif used[0]==used[4] and used[4]==used[8]: return (True,7)
     elif used[2]==used[4] and used[4]==used[6]: return (True,8)
     else: return (False,999)
-  
 def validmove(pos,used):
     """Takes in the coordanates of the mouse and calculates where on the board that is"""
     #rickageddon
