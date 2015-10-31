@@ -1,71 +1,31 @@
-import pygame, math, sys, time
-pygame.init()
-#all images drawn by me
-icon=pygame.image.load("icon.png")
-pygame.display.set_icon(icon)
-screen=pygame.display.set_mode((610, 650))
-clock = pygame.time.Clock()
-rick=pygame.image.load("rick.png")
-board=pygame.image.load("board.png")
-pygame.display.set_caption("TicTacPro Game","TicTacPro")
-#all sound files from sounddogs.com royalty free and some editied by me
-special=pygame.mixer.Sound("special.wav")
-pygame.mixer.music.load("music.wav")
-pygame.mixer.music.play(-1)
-clicksound=pygame.mixer.Sound("click.wav")
-winsound=pygame.mixer.Sound("win.wav")
-losersound=pygame.mixer.Sound("loser.wav")
-nosound=pygame.mixer.Sound("no.wav")
-
-def print(text3):
-    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
+from offline2p import *
+from main import *
+"""Shared functions throughout the entire program for drawing the board etc
+"""
+def printcoord(x,y,text):
+    """lets you draw text anywhere on the screen, you have to pass in
+    coord for the top left corner"""
     font = pygame.font.Font(None, 32)
     text = font.render(text3, 4, (255, 255, 255))
-    screen.blit(text, (40,610))
+    screen.blit(text, (x,y))
     pygame.display.flip()
     
-def main():
-    x=pygame.image.load('x.png')
-    o=pygame.image.load('o.png')
-    screen.blit(board,(0,0))
-    used=[7,8,9,4,5,6,1,2,3]
+def print(text):
+    """changes the print function to now print to the gui 'status bar' """
+    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
+    font = pygame.font.Font(None, 32)
+    textg = font.render(text, 4, (255, 255, 255))
+    screen.blit(textg, (40,610))
     pygame.display.flip()
-    turn=True
-    count=0
-    isgamewon=(False,9)
-    while count<9 and not isgamewon[0]:
-        #every other time this ramdomises
-        ev = pygame.event.get()
-        for event in ev:
-            if event.type == pygame.MOUSEBUTTONUP:
-                
-                pos = pygame.mouse.get_pos()
-                valid=validmove(pos,used)
-                if valid:
-                    clicksound.play()
-                    drawbox(o,x,turn,pos,used)
-                    isgamewon=gamewon(used)
-                    count+=1
-                    if isgamewon[0]:
-                        drawline(isgamewon[1],turn)
-                        break
-                    turn=not turn
-                else:
-                    nosound.play()
-                    print("NO") 
-            elif event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit(0)
-    if isgamewon[0]:
-        if turn: winner="1"
-        else: winner="2"
-        print("The Winner is Player {0}!".format(winner))
-    else: losersound.play(),print("No One Won!")
-    pygame.mixer.music.fadeout(1999)
-    time.sleep(2)
-    pygame.quit()   
-
+    
+def quitgame():
+    """Quits the GUI"""
+    pygame.quit()
+    sys.exit()
+    
 def gamewon(used):
+    """Decides wether the game is won taking in the used table
+    that indicates current game state"""
     if used[0]==used[1] and used[1]==used[2]: return (True,1)
     elif used[3]==used[4] and used[4]==used[5]: return (True,2)
     elif used[6]==used[7] and used[7]==used[8]: return (True,3)
@@ -75,9 +35,30 @@ def gamewon(used):
     elif used[0]==used[4] and used[4]==used[8]: return (True,7)
     elif used[2]==used[4] and used[4]==used[6]: return (True,8)
     else: return (False,999)
-    
+  
 def validmove(pos,used):
+    """Takes in the coordanates of the mouse and calculates where on the board that is"""
     #rickageddon
+    rickcheck(pos)
+    if pos[0] in range(10,200) and pos[1] in range(10,200): sqr=0       
+    elif pos[0] in range(210,400) and pos[1] in range(10,200): sqr=1
+    elif pos[0] in range(410,600) and pos[1] in range(10,200): sqr=2
+    elif pos[0] in range(10,200) and pos[1] in range(210,400): sqr=3      
+    elif pos[0] in range(210,400) and pos[1] in range(210,400): sqr=4
+    elif pos[0] in range(410,600) and pos[1] in range(210,400): sqr=5
+    elif pos[0] in range(10,200) and pos[1] in range(410,600): sqr=6     
+    elif pos[0] in range(210,400) and pos[1] in range(410,600): sqr=7
+    elif pos[0] in range(410,600) and pos[1] in range(410,600): sqr=8
+    else:
+        return False
+    
+    if used[sqr] not in ["o","x"]:
+            return True
+    else:
+        return False
+
+def rickcheck(pos):
+    """super special move that rolls the screen"""
     if pos[0] in range(580,610) and pos[1] in range(610,640):
         pygame.image.save(screen,"temp.png")
         pygame.mixer.music.pause()
@@ -106,31 +87,17 @@ def validmove(pos,used):
             ev = pygame.event.get()
             for event in ev:
                 if event.type == pygame.MOUSEBUTTONUP:
+                    pos = pygame.mouse.get_pos()
                     screen.blit(rick,(pos[0]-50,pos[1]-50))
         special.stop()
         pygame.mixer.music.unpause()
         temp=pygame.image.load("temp.png")
         screen.blit(pygame.image.load("temp.png"),(0,0))
-        pygame.display.flip()  
-        
-    if pos[0] in range(10,200) and pos[1] in range(10,200): sqr=0       
-    elif pos[0] in range(210,400) and pos[1] in range(10,200): sqr=1
-    elif pos[0] in range(410,600) and pos[1] in range(10,200): sqr=2
-    elif pos[0] in range(10,200) and pos[1] in range(210,400): sqr=3      
-    elif pos[0] in range(210,400) and pos[1] in range(210,400): sqr=4
-    elif pos[0] in range(410,600) and pos[1] in range(210,400): sqr=5
-    elif pos[0] in range(10,200) and pos[1] in range(410,600): sqr=6     
-    elif pos[0] in range(210,400) and pos[1] in range(410,600): sqr=7
-    elif pos[0] in range(410,600) and pos[1] in range(410,600): sqr=8
-    else:
-        return False
-    
-    if used[sqr] not in ["o","x"]:
-            return True
-    else:
-        return False
+        pygame.display.flip()
         
 def drawbox(o,x,turn,pos,used):
+    """Draws the game board, takes in the image
+    """
     #box7
     if pos[0] in range(10,200) and pos[1] in range(10,200) and used :
         if turn:
@@ -213,6 +180,7 @@ def drawbox(o,x,turn,pos,used):
     return used
 
 def drawline(wincombo,turn):
+    """when the game is won it creates the effect of the flashing winning boxes"""
     xw=pygame.image.load("xwon.png")
     ow=pygame.image.load("owin.png")
     x=pygame.image.load("x.png")
@@ -291,5 +259,4 @@ def drawline(wincombo,turn):
         time.sleep(0.5)
 
 if __name__=="__main__":
-    
-    main()
+    print("you need to run the main program")
