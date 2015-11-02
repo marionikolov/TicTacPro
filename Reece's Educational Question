@@ -1,0 +1,19 @@
+#An Educational question to win first go
+print("Who is now the american President?")
+
+
+StartQ = input("The answer is: A) Barrack Obama? B) Sean Paul? C)Michael Jordan? D)Skepta? [A/B/C/D]? :")
+#Answers to the question    
+if StartQ in ['A', 'B', 'C', 'D']:
+
+    if StartQ == "A":
+        print ("Correct, you go first!.") 
+    elif StartQ == "B": 
+        print ("Sorry this is incorrect, you go second!.")
+    elif StartQ == "C": 
+        print ("Sorry this is incorrect, you go second!.")
+    elif StartQ == "D": 
+        print ("Sorry this is incorrect, you go second!.")
+    else:
+        print ("Sorry, this isnt an answer")    
+
