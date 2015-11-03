@@ -6,6 +6,13 @@ pygame.init()
 pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
 screen=pygame.display.set_mode((610, 650))
 clock = pygame.time.Clock()
+images=[
+pygame.image.load("images/classic/board.png"),
+pygame.image.load('images/classic/x.png'),
+pygame.image.load('images/classic/o.png'),
+pygame.image.load("images/classic/xwon.png"),
+pygame.image.load("images/classic/owin.png")
+]
 rick=pygame.image.load("images/misc/rick.png")
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
 #all sound files from sounddogs.com royalty free and some editied by me
@@ -26,7 +33,7 @@ from firstgo import *
 from settings import *
 from logic import *
 
-def mainmenu():
+def mainmenu(images):
     q=False
     while not q:
         screen.blit(mainmenuimg,(0,0))
@@ -40,14 +47,15 @@ def mainmenu():
                     online(whosturn)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(190,285):
-                    offline1p(whosturn)
+                    whosturn=chooseturn()
+                    offline1p("easy",whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(290,385):
                     whosturn=chooseturn()
-                    offline2p(whosturn)
+                    offline2p(whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
-                    settingsmenu()
+                    images=settingsmenu()
                     
                 elif pos[0] in range(50,560) and pos[1] in range(490,585):
                     achievements()
@@ -58,4 +66,4 @@ def mainmenu():
                 
 #funtion for the game running in offline 2 player mode
 if __name__=="__main__":
-    mainmenu()
+    mainmenu(images)

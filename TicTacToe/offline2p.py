@@ -1,7 +1,7 @@
 from main import *
 from logic import *
 
-def offline2p(turn):
+def offline2p(turn,images):
     """runs the offline 2 player iteration of the game"""
     screen=pygame.display.set_mode((610, 650))
     pygame.mixer.music.play(-1)
@@ -19,11 +19,11 @@ def offline2p(turn):
                 valid=validmove(pos,used)
                 if valid:
                     clicksound.play()
-                    drawbox(turn,pos,used)
+                    drawbox(turn,pos,used,images)
                     isgamewon=gamewon(used)
                     count+=1
                     if isgamewon[0]:
-                        drawline(isgamewon[1],turn)
+                        drawline(isgamewon[1],turn,images)
                         break
                     turn=not turn
                 else:
@@ -40,4 +40,4 @@ def offline2p(turn):
     time.sleep(2)
     
 if __name__=="__main__":
-    offline2p(True)
+    offline2p(True,images)

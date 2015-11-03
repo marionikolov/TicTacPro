@@ -94,7 +94,7 @@ def rickcheck(pos):
         screen.blit(pygame.image.load("images/misc/temp.png"),(0,0))
         pygame.display.flip()
         
-def drawbox(turn,pos,used):
+def drawbox(turn,pos,used,images):
     """Draws the game board, takes in the image
     """
     #box7
@@ -178,7 +178,7 @@ def drawbox(turn,pos,used):
     pygame.display.flip()
     return used
 
-def drawline(wincombo,turn):
+def drawline(wincombo,turn,images):
     """when the game is won it creates the effect of the flashing winning boxes"""
     xw=images[3]
     ow=images[4]

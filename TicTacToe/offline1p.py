@@ -2,7 +2,7 @@ from main import *
 from logic import *
 import random
 
-def offline1p(difficulty, turn):
+def offline1p(difficulty, turn,images):
     """runs the offline 1 player iteration of the game"""
     screen=pygame.display.set_mode((610, 650))
     pygame.mixer.music.play(-1)
@@ -20,11 +20,11 @@ def offline1p(difficulty, turn):
                     pos = pygame.mouse.get_pos()
                     valid=validmove(pos,used)
                     if valid:
-                        drawbox(turn,pos,used)
+                        drawbox(turn,pos,used,images)
                         isgamewon=gamewon(used)
                         count+=1
                         if isgamewon[0]:
-                            drawline(isgamewon[1],turn)
+                            drawline(isgamewon[1],turn,images)
                             break
                         turn=not turn
                     else:
@@ -43,11 +43,11 @@ def offline1p(difficulty, turn):
                 valid=validmove(pos,used)
                 time.sleep(0.5)
                 if valid:
-                    drawbox(turn,pos,used)
+                    drawbox(turn,pos,used,images)
                     isgamewon=gamewon(used)
                     count+=1
                     if isgamewon[0]:
-                        drawline(isgamewon[1],turn)
+                        drawline(isgamewon[1],turn,images)
                         break
                     turn=not turn
                 else:
@@ -61,4 +61,4 @@ def offline1p(difficulty, turn):
     time.sleep(2) 
 
 if __name__=="__main__":
-    offline1p("easy",True)
+    offline1p("easy",True,images)
