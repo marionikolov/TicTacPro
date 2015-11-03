@@ -1,5 +1,5 @@
-from offline2p import *
 from main import *
+from settings import *
 """Shared functions throughout the entire program for drawing the board etc
 """
 def printcoord(x,y,text):
@@ -14,7 +14,7 @@ def print(text):
     """changes the print function to now print to the gui 'status bar' """
     pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
     font = pygame.font.Font(None, 32)
-    textg = font.render(text, 4, (255, 255, 255))
+    textg = font.render(str(text), 4, (255, 255, 255))
     screen.blit(textg, (40,610))
     pygame.display.flip()
     
@@ -59,7 +59,7 @@ def validmove(pos,used):
 def rickcheck(pos):
     """super special move that rolls the screen"""
     if pos[0] in range(580,610) and pos[1] in range(610,640):
-        pygame.image.save(screen,"temp.png")
+        pygame.image.save(screen,"images/misc/temp.png")
         pygame.mixer.music.pause()
         special.stop()
         special.play(-1)
@@ -90,61 +90,61 @@ def rickcheck(pos):
                     screen.blit(rick,(pos[0]-50,pos[1]-50))
         special.stop()
         pygame.mixer.music.unpause()
-        temp=pygame.image.load("temp.png")
-        screen.blit(pygame.image.load("temp.png"),(0,0))
+        temp=pygame.image.load("images/misc/temp.png")
+        screen.blit(pygame.image.load("images/misc/temp.png"),(0,0))
         pygame.display.flip()
         
-def drawbox(o,x,turn,pos,used):
+def drawbox(turn,pos,used):
     """Draws the game board, takes in the image
     """
     #box7
     if pos[0] in range(10,200) and pos[1] in range(10,200) and used :
         if turn:
-            screen.blit(x,(10,10))
+            screen.blit(images[1],(10,10))
             used[0]="x"
         else:
-            screen.blit(o,(10,10))
+            screen.blit(images[2],(10,10))
             used[0]="o"
     #box8        
     elif pos[0] in range(210,400) and pos[1] in range(10,200):
         if turn:
-            screen.blit(x,(210,10))
+            screen.blit(images[1],(210,10))
             used[1]="x"
         else:
-            screen.blit(o,(210,10))
+            screen.blit(images[2],(210,10))
             used[1]="o"
     #box9
     elif pos[0] in range(410,600) and pos[1] in range(10,200):
         if turn:
-            screen.blit(x,(410,10))
+            screen.blit(images[1],(410,10))
             used[2]="x"
         else:
-            screen.blit(o,(410,10))
+            screen.blit(images[2],(410,10))
             used[2]="o"
             
     #box4
     elif pos[0] in range(10,200) and pos[1] in range(210,400):
         if turn:
-            screen.blit(x,(10,210))
+            screen.blit(images[1],(10,210))
             used[3]="x"
         else:
-            screen.blit(o,(10,210))
+            screen.blit(images[2],(10,210))
             used[3]="o"
     #box5        
     elif pos[0] in range(210,400) and pos[1] in range(210,400):
         if turn:
-            screen.blit(x,(210,210))
+            screen.blit(images[1],(210,210))
             used[4]="x"
         else:
-            screen.blit(o,(210,210))
+            screen.blit(images[2],(210,210))
             used[4]="o"
     #box6
     elif pos[0] in range(410,600) and pos[1] in range(210,400):
         if turn:
-            screen.blit(x,(410,210))
+            screen.blit(images[1],(410,210))
             used[5]="x"
         else:
-            screen.blit(o,(410,210))
+            screen.blit(images[2],(410,210))
             used[5]="o"
 
 
@@ -152,26 +152,26 @@ def drawbox(o,x,turn,pos,used):
     #box1
     elif pos[0] in range(10,200) and pos[1] in range(410,600):
         if turn:
-            screen.blit(x,(10,410))
+            screen.blit(images[1],(10,410))
             used[6]="x"
         else:
-            screen.blit(o,(10,410))
+            screen.blit(images[2],(10,410))
             used[6]="o"
     #box2        
     elif pos[0] in range(210,400) and pos[1] in range(410,600):
         if turn:
-            screen.blit(x,(210,410))
+            screen.blit(images[1],(210,410))
             used[7]="x"
         else:
-            screen.blit(o,(210,410))
+            screen.blit(images[2],(210,410))
             used[7]="o"
     #box3
     elif pos[0] in range(410,600) and pos[1] in range(410,600):
         if turn:
-            screen.blit(x,(410,410))
+            screen.blit(images[1],(410,410))
             used[8]="x"
         else:
-            screen.blit(o,(410,410))
+            screen.blit(images[2],(410,410))
             used[8]="o"
             
     turn=not turn
@@ -180,10 +180,10 @@ def drawbox(o,x,turn,pos,used):
 
 def drawline(wincombo,turn):
     """when the game is won it creates the effect of the flashing winning boxes"""
-    xw=pygame.image.load("xwon.png")
-    ow=pygame.image.load("owin.png")
-    x=pygame.image.load("x.png")
-    o=pygame.image.load("o.png")
+    xw=images[3]
+    ow=images[4]
+    x=images[1]
+    o=images[2]
     #creates the flashing effect
     for count in range(0,6):
         #changes every other time

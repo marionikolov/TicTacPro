@@ -6,9 +6,7 @@ def offline1p(difficulty, turn):
     """runs the offline 1 player iteration of the game"""
     screen=pygame.display.set_mode((610, 650))
     pygame.mixer.music.play(-1)
-    x=pygame.image.load('x.png')
-    o=pygame.image.load('o.png')
-    screen.blit(board,(0,0))
+    screen.blit(images[0],(0,0))
     used=[7,8,9,4,5,6,1,2,3]
     pygame.display.flip()
     count=0
@@ -22,7 +20,7 @@ def offline1p(difficulty, turn):
                     pos = pygame.mouse.get_pos()
                     valid=validmove(pos,used)
                     if valid:
-                        drawbox(o,x,turn,pos,used)
+                        drawbox(turn,pos,used)
                         isgamewon=gamewon(used)
                         count+=1
                         if isgamewon[0]:
@@ -45,7 +43,7 @@ def offline1p(difficulty, turn):
                 valid=validmove(pos,used)
                 time.sleep(0.5)
                 if valid:
-                    drawbox(o,x,turn,pos,used)
+                    drawbox(turn,pos,used)
                     isgamewon=gamewon(used)
                     count+=1
                     if isgamewon[0]:
@@ -60,8 +58,7 @@ def offline1p(difficulty, turn):
         print("The Winner is Player {0}!".format(winner))
     else: losersound.play(),print("No One Won!") 
     pygame.mixer.music.fadeout(2000)
-    time.sleep(2)
-    quitgame() 
+    time.sleep(2) 
 
 if __name__=="__main__":
     offline1p("easy",True)
