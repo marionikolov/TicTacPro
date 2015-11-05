@@ -33,6 +33,7 @@ def settingsmenu():
                     pygame.image.load("images/classic/xwon.png"),
                     pygame.image.load("images/classic/owin.png")
                     ]
+                    pygame.mixer.music.load("music/music.mp3")
                 elif pos[0] in range(400,600) and pos[1] in range(160,300):
                     print("Board Loaded - Test Board")
                     images=[
@@ -42,13 +43,18 @@ def settingsmenu():
                     pygame.image.load("images/test/xwon.png"),
                     pygame.image.load("images/test/owin.png")
                     ]
+                    pygame.mixer.music.load("images/test/music.mp3")
                     
                 elif pos[0] in range(30,200) and pos[1] in range(370,510):
                     print("Board Loaded - Jungle")
                 elif pos[0] in range(400,600) and pos[1] in range(370,510):
                     print("Board Loaded - Underwater")         
                 elif pos[0] in range(23,204) and pos[1] in range(540,600):
-                    return images
+                    try:
+                        return images
+                    except:
+                        return None
+                        
                     
 if __name__=="__main__":
     settingsmenu()

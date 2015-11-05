@@ -52,13 +52,14 @@ def offline1p(difficulty, turn,images):
                     turn=not turn
                 else:
                     pass    
-    if count!=9:
+    if isgamewon:
         if turn: winner="1"
         else: winner="2"
-        print("The Winner is Player {0}!".format(winner))
-    else: losersound.play(),print("No One Won!") 
+        print("The Winner is Player {0}!".format(winner)) 
+    else: losersound.play(),print("No One Won!")
     pygame.mixer.music.fadeout(2000)
-    time.sleep(2) 
+    time.sleep(2)
+    
 
 if __name__=="__main__":
     offline1p("easy",True,images)

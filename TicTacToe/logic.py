@@ -15,7 +15,7 @@ def print(text):
     pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
     font = pygame.font.Font(None, 32)
     textg = font.render(str(text), 4, (255, 255, 255))
-    screen.blit(textg, (40,610))
+    screen.blit(textg, (40,615))
     pygame.display.flip()
     
 def quitgame():
@@ -60,9 +60,8 @@ def rickcheck(pos):
     """super special move that rolls the screen"""
     if pos[0] in range(580,610) and pos[1] in range(610,640):
         pygame.image.save(screen,"images/misc/temp.png")
-        pygame.mixer.music.pause()
-        special.stop()
-        special.play(-1)
+        pygame.mixer.music.load("music/special.mp3")
+        pygame.mixer.music.play(-1)
         posit=(-200)
         num=10
         while num<40:
@@ -88,8 +87,6 @@ def rickcheck(pos):
                 if event.type == pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
                     screen.blit(rick,(pos[0]-50,pos[1]-50))
-        special.stop()
-        pygame.mixer.music.unpause()
         temp=pygame.image.load("images/misc/temp.png")
         screen.blit(pygame.image.load("images/misc/temp.png"),(0,0))
         pygame.display.flip()

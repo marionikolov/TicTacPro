@@ -16,8 +16,7 @@ pygame.image.load("images/classic/owin.png")
 rick=pygame.image.load("images/misc/rick.png")
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
 #all sound files from sounddogs.com royalty free and some editied by me
-special=pygame.mixer.Sound("music/special.wav")
-pygame.mixer.music.load("music/music.wav")
+pygame.mixer.music.load("music/music.mp3")
 clicksound=pygame.mixer.Sound("music/click.wav")
 winsound=pygame.mixer.Sound("music/win.wav")
 losersound=pygame.mixer.Sound("music/loser.wav")
@@ -43,6 +42,7 @@ def mainmenu(images):
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
                 if pos[0] in range(50,560) and pos[1] in range(90,180):
+                    print("Under Construction!")
                     whosturn=chooseturn()
                     online(whosturn)
                     
@@ -55,9 +55,12 @@ def mainmenu(images):
                     offline2p(whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
-                    images=settingsmenu()
+                    possimages=settingsmenu()
+                    if possimages!=None:
+                        images=possimages
                     
                 elif pos[0] in range(50,560) and pos[1] in range(490,585):
+                    print("Under Construction!")
                     achievements()
 
                 elif pos[0] in range(534,600) and pos[1] in range(15,73):
