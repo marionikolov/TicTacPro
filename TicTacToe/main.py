@@ -16,12 +16,13 @@ pygame.image.load("images/classic/owin.png")
 rick=pygame.image.load("images/misc/rick.png")
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
 #all sound files from sounddogs.com royalty free and some editied by me
-pygame.mixer.music.load("music/music.mp3")
-clicksound=pygame.mixer.Sound("music/click.wav")
-winsound=pygame.mixer.Sound("music/win.wav")
-losersound=pygame.mixer.Sound("music/loser.wav")
-nosound=pygame.mixer.Sound("music/no.wav")
+pygame.mixer.music.load("music/harder.mp3")
+clicksound=pygame.mixer.Sound("music/fx/click.wav")
+winsound=pygame.mixer.Sound("music/fx/win.wav")
+losersound=pygame.mixer.Sound("music/fx/loser.wav")
+nosound=pygame.mixer.Sound("music/fx/no.wav")
 mainmenuimg=pygame.image.load("images/menu/mainmenu.png")
+#pygame.mixer.music.play(-1)
 #shared code for game logic etc
 from offline2p import *
 from offline1p import *
@@ -55,7 +56,7 @@ def mainmenu(images):
                     offline2p(whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
-                    possimages=settingsmenu()
+                    possimages=settingmenu()
                     if possimages!=None:
                         images=possimages
                     

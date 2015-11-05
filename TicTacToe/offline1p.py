@@ -2,7 +2,7 @@ from main import *
 from logic import *
 import random
 
-def offline1p(difficulty, turn,images):
+def offline1p(difficulty, turn, images):
     """runs the offline 1 player iteration of the game"""
     screen=pygame.display.set_mode((610, 650))
     pygame.mixer.music.play(-1)
