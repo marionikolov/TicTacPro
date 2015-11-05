@@ -295,4 +295,4 @@ def drawline(wincombo,turn):
         time.sleep(0.5)
 
 if __name__=="__main__":
-    main(False, easy, True)
+    main(False, "easy", True)
