@@ -59,6 +59,7 @@ def validmove(pos,used):
 def rickcheck(pos):
     """super special move that rolls the screen"""
     if pos[0] in range(580,610) and pos[1] in range(610,640):
+        cena=pygame.image.load("images/misc/cena.png")
         pygame.image.save(screen,"images/misc/temp.png")
         pygame.mixer.music.load("music/special.mp3")
         pygame.mixer.music.play(-1)
@@ -87,6 +88,14 @@ def rickcheck(pos):
                 if event.type == pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
                     screen.blit(rick,(pos[0]-50,pos[1]-50))
+        pygame.mixer.music.pause()
+        random.play()
+        time.sleep(1.6)
+        screen.blit(cena,(-350,-50))
+        pygame.display.flip()
+        time.sleep(4.4)
+        pygame.mixer.music.unpause()
+        
         temp=pygame.image.load("images/misc/temp.png")
         screen.blit(pygame.image.load("images/misc/temp.png"),(0,0))
         pygame.display.flip()

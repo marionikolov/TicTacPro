@@ -18,6 +18,7 @@ def offline1p(difficulty, turn, images):
                 # user move
                 if event.type == pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
+                    clicksound.play()
                     valid=validmove(pos,used)
                     if valid:
                         drawbox(turn,pos,used,images)
@@ -28,8 +29,8 @@ def offline1p(difficulty, turn, images):
                             break
                         turn=not turn
                     else:
-                        pass
                         print("That is not a valid move.")
+                        nosound.play()
             elif not turn:
                 # AI's move
                 if difficulty == "easy":
@@ -43,6 +44,7 @@ def offline1p(difficulty, turn, images):
                 valid=validmove(pos,used)
                 time.sleep(0.5)
                 if valid:
+                    clicksound.play()
                     drawbox(turn,pos,used,images)
                     isgamewon=gamewon(used)
                     count+=1
