@@ -39,29 +39,7 @@ def offline1p(difficulty, turn, images):
                     #add code here, V
                     print("medium")
                 elif difficulty == "hard":
-                    def getComputerMove(board, computerLetter):
-                        # Given a board and the computer's letter, determine where to move and return that move.
-                        if computerLetter == 'X':
-                           playerLetter = 'O'
-                        else:
-                           playerLetter = 'X'
                     #add code here, V
-                    # Here is our algorithm for our Tic Tac Toe AI:
-                    # First, check if we can win in the next move
-                    for i in range(1, 10):
-                        copy = getBoardCopy(board)
-                        if isSpaceFree(copy, i):
-                            makeMove(copy, computerLetter, i)
-                            if isWinner(copy, computerLetter):
-                                return i
-
-    # Check if the player could win on his next move, and block them.
-    for i in range(1, 10):
-        copy = getBoardCopy(board)
-        if isSpaceFree(copy, i):
-            makeMove(copy, playerLetter, i)
-            if isWinner(copy, playerLetter):
-                return i
                 print("hard")
                 valid=validmove(pos,used)
                 time.sleep(0.5)
