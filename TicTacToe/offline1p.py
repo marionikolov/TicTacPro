@@ -62,7 +62,7 @@ def offline1p(difficulty, turn, images):
             makeMove(copy, playerLetter, i)
             if isWinner(copy, playerLetter):
                 return i
-                    print("hard")
+                print("hard")
                 valid=validmove(pos,used)
                 time.sleep(0.5)
                 if valid:
