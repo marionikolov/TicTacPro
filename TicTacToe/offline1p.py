@@ -55,8 +55,14 @@ def offline1p(difficulty, turn, images):
                     pass    
     if isgamewon:
         if turn: winner="1"
+            import random
+            a = ["Decent!", "You are a TicTacToe master!" , "You are very good, we might need a supercomputer!" , "Very good!" , "Nice one!", "You are so good!"]
+            print(a[random.randint(0,6)])
         else: winner="2"
-        print("The Winner is Player {0}!".format(winner)) 
+            import random
+            b = ["You need more practise.", "You lost against a computer at a TicTacToe game :D!", "The PC beat you.....:D." , "Next time mate." , "Good luck next time." , "Try again."]
+            print(b[random.randint(0,5)])
+            print("The Winner is Player {0}!".format(winner)) 
     else: losersound.play(),print("No One Won!")
     pygame.mixer.music.fadeout(2000)
     time.sleep(2)
