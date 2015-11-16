@@ -40,14 +40,21 @@ random=pygame.mixer.Sound("music/fx/random.wav")
 mainmenuimg=pygame.image.load("images/menu/mainmenu.png")
 #pygame.mixer.music.play(-1)
 #shared code for game logic etc
-from offline2p import *
-from offline1p import *
-from online import *
-from achievements import *
-from settings import *
-from firstgo import *
-from settings import *
-from logic import *
+try:
+    from offline2p import *
+    from offline1p import *
+    from online import *
+    from achievements import *
+    from settings import *
+    from firstgo import *
+    from settings import *
+    from logic import *
+except ImportError:
+    print("Error - You're missing game files!")
+    print("Please download zip file again!")
+    for count in range(0,50000000):
+        pass
+    raise SystemExit
 
 def mainmenu(images):
     q=False

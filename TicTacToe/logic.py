@@ -88,6 +88,7 @@ def rickcheck(pos):
                 if event.type == pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
                     screen.blit(rick,(pos[0]-50,pos[1]-50))
+                    pygame.display.flip()
         pygame.mixer.music.pause()
         random.play()
         time.sleep(1.6)

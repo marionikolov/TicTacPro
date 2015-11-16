@@ -40,9 +40,8 @@ def offline1p(difficulty, turn, images):
                     print("medium")
                 elif difficulty == "hard":
                     #add code here, V
-                print("hard")
+                    print("hard")
                 valid=validmove(pos,used)
-                time.sleep(0.5)
                 if valid:
                     clicksound.play()
                     drawbox(turn,pos,used,images)
