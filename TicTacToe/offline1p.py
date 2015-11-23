@@ -54,9 +54,11 @@ def offline1p(difficulty, turn, images):
                 else:
                     pass    
     if isgamewon:
-        if turn: winner="1"
+        if turn:
+            winner="1"
             print("The Winner is Player {0}!".format(winner))
-        else: winner="2"
+        else:
+            winner="2"
             print("The Winner is Player {0}!".format(winner)) 
     else: losersound.play(),print("No One Won!")
     pygame.mixer.music.fadeout(2000)

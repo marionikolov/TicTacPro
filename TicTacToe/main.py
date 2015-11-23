@@ -104,7 +104,7 @@ if __name__=="__main__":
     screen = pygame.display.set_mode((200,200),pygame.NOFRAME)
     pygame.Surface([640,480], pygame.SRCALPHA, 32)
     splash=pygame.image.load("images\misc\splash.png")
-    screen.blit(splash,(-50,-60))
+    screen.blit(splash,(-30,-200))
     pygame.display.flip()
     time.sleep(2)
     pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
