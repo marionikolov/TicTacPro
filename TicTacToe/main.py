@@ -1,4 +1,4 @@
-#init stuff
+#installing all the modules required for this game
 try:
     module="Time"
     import time
@@ -10,14 +10,17 @@ try:
     import math
     module="os"
     import os
+#if none of these work then it will throw an error and tell you what you need
 except:
     print("Error - You don't have the required modules installed!")
     print("Please install Module '{0}'! ".format(module))
     for count in range(0,50000000):
         pass
     raise SystemExit
+
+
 pygame.init()
-#game wide initalistion, if its specific to one mode then do it in that games function
+#game wide initalistion, starts all the relevant aspects to the game and loads the standard images
 pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
 screen=pygame.display.set_mode((610, 650))
 clock = pygame.time.Clock()
@@ -30,6 +33,7 @@ pygame.image.load("images/classic/owin.png")
 ]
 rick=pygame.image.load("images/misc/rick.png")
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
+
 #all sound files from sounddogs.com royalty free and some editied by me
 pygame.mixer.music.load("music/harder.mp3")
 clicksound=pygame.mixer.Sound("music/fx/click.wav")
@@ -38,8 +42,7 @@ losersound=pygame.mixer.Sound("music/fx/loser.wav")
 nosound=pygame.mixer.Sound("music/fx/no.wav")
 random=pygame.mixer.Sound("music/fx/random.wav")
 mainmenuimg=pygame.image.load("images/menu/mainmenu.png")
-#pygame.mixer.music.play(-1)
-#shared code for game logic etc
+#imports each file so the functions can be called and run in this program
 try:
     from offline2p import *
     from offline1p import *
@@ -49,6 +52,7 @@ try:
     from firstgo import *
     from settings import *
     from logic import *
+#if any files are missing will let you know what is missing
 except ImportError:
     print("Error - You're missing game files!")
     print("Please download zip file again!")
@@ -57,24 +61,29 @@ except ImportError:
     raise SystemExit
 
 def mainmenu(images):
+    """Runs the main menu, it opens the main menu, and allows you to access the rest of the game from here"""
     q=False
     while not q:
         screen.blit(mainmenuimg,(0,0))
         pygame.display.flip()
         ev = pygame.event.get()
+        #if an event happens such as a keypress or mouse click it will run through this code
         for event in ev:
             if event.type == pygame.QUIT:
                 quitgame()
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
                 pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
+                #checks whether the mouse click was on a button, which i have defined by coordinates 
                 if pos[0] in range(50,560) and pos[1] in range(90,180):
                     print("Under Construction!")
                     whosturn=chooseturn()
                     online(whosturn)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(190,285):
+                    #runs the code that asks who goes first
                     whosturn=chooseturn()
+                    #launches the offline 1p state
                     offline1p("easy",whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(290,385):
@@ -83,6 +92,7 @@ def mainmenu(images):
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
                     possimages=settingmenu()
+                    #if the stlye is changed then this code will run, changing what images the program uses
                     if possimages!=None:
                         images=possimages
                     
@@ -91,12 +101,13 @@ def mainmenu(images):
                     achievements()
 
                 elif pos[0] in range(534,600) and pos[1] in range(15,73):
+                    #quits the game and leaves the loop
                     quitgame()
                     q=True
                 
-#funtion for the game running in offline 2 player mode
+
 if __name__=="__main__":
-    pygame.init()
+    #this generates the splash screen for the program, this is run after the loading code as splash screens are traditionally used for that purpose and that's what we're replicating 
     pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
     os.environ['SDL_VIDEO_CENTERED'] = '1'
     sega=pygame.mixer.Sound("music/fx/sega.wav")

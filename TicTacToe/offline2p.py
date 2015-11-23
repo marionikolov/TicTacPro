@@ -23,6 +23,7 @@ def offline2p(turn,images):
                     isgamewon=gamewon(used)
                     count+=1
                     if isgamewon[0]:
+                        #(bool,"PLayer 2")
                         drawline(isgamewon[1],turn,images)
                         break
                     turn=not turn

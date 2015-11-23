@@ -1,54 +1,64 @@
-from main import *
-screen=pygame.display.set_mode((900, 650))
+# by Timothy Downs, inputbox written for my map editor
+
+# This program needs a little cleaning up
+# It ignores the shift key
+# And, for reasons of my own, this program converts "-" to "_"
+
+# A program to get user input, allowing backspace etc
+# shown in a box in the middle of the screen
+# Called by:
+# import inputbox
+# answer = inputbox.ask(screen, "Your name")
+#
+# Only near the center of the screen is blitted to
+
+import pygame, pygame.font, pygame.event, pygame.draw, string
+from pygame.locals import *
+
+def get_key():
+  while 1:
+    event = pygame.event.poll()
+    if event.type == KEYDOWN:
+      return event.key
+    else:
+      pass
+
+def display_box(screen, message):
+  "Print a message in a box in the middle of the screen"
+  fontobject = pygame.font.Font(None,18)
+  pygame.draw.rect(screen, (0,0,0),
+                   ((screen.get_width() / 2) - 100,
+                    (screen.get_height() / 2) - 10,
+                    200,20), 0)
+  pygame.draw.rect(screen, (255,255,255),
+                   ((screen.get_width() / 2) - 102,
+                    (screen.get_height() / 2) - 12,
+                    204,24), 1)
+  if len(message) != 0:
+    screen.blit(fontobject.render(message, 1, (255,255,255)),
+                ((screen.get_width() / 2) - 100, (screen.get_height() / 2) - 10))
+  pygame.display.flip()
+
+def ask(screen, question):
+  "ask(screen, question) -> answer"
+  pygame.font.init()
+  current_string = []
+  display_box(screen, question + ": " + str(current_string))
+  while 1:
+    inkey = get_key()
+    if inkey == K_BACKSPACE:
+      current_string = current_string[0:-1]
+    elif inkey == K_RETURN:
+      break
+    elif inkey == K_MINUS:
+      current_string.append("_")
+    elif inkey <= 127:
+      current_string.append(chr(inkey))
+    display_box(screen, question + ": " +current_string)
+  return string.join(current_string,"")
 
 def main():
-    chat=[]
-    turn=True
-    while True:
-        ev = pygame.event.get()
-        for event in ev:
-            if event.type == pygame.QUIT:
-                pass
-        if turn:
-            a=input(": ")
-            chat.insert(0,("TotallyNotJiminy",a))
-            drawlist(chat)
-        else:
-            b=input(": ")
-            chat.insert(0,("PartyBoi 69",b))
-            drawlist(chat)
-        turn=not turn
-def drawlist(chat):
-    y=500
-    if len(chat)>6: del chat[-1]
-    pygame.draw.rect(screen, (0,100,120), [610, 0, 300, 700], 0)
-    for each in chat:
-        each=(str(each[0]) +": " + str(each[1]))
-        if len(each)<40:
-            font = pygame.font.Font(None, 16)
-            chatstuff = font.render(each, 4, (255, 255, 255))
-            screen.blit(chatstuff, (630,y))
-            y-=80
-        else:
-            pass
-##            bigmes=[]
-##            while True:
-##                each2=each
-##                if len(each2)>40:
-##                    each2=each[40:]
-##                    each=each[:40]
-##                    bigmes.append(each)
-##                else:
-##                    bigmes.append(each2)
-##                    break
-##            y2=y
-##            for each in bigmes:
-##                print(len(bigmes))
-##                font = pygame.font.Font(None, 16)
-##                chatstuff = font.render(each, 4, (255, 255, 255))
-##                screen.blit(chatstuff, (630,y2))
-##                y2+=5       
-        pygame.display.flip()
-if __name__=="__main__":
-    main()
-    
+  screen = pygame.display.set_mode((320,240))
+  print (ask(screen, "Name") + " was entered")
+
+if __name__ == '__main__': main()
