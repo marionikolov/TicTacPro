@@ -1,19 +1,222 @@
 #An Educational question to win first go
-print("Who is now the american President?")
+import random
+
+#winner
+#True=player 1
+#false=player 2
+def Question(n):    
+    if n==1:
+        print("Who is now the American President?")
+        Q1 = input("The answer is: A) Barrack Obama? B) Sean Paul? C)Michael Jordan? D)Skepta? [A/B/C/D]?").upper()  
+
+        if Q1 == "A":
+            print ("Correct, you go first!.")
+            return True
+        elif Q1 == "B": 
+            print ("Sorry this is incorrect, you go second!.")
+            return False
+        elif Q1 == "C": 
+             print ("Sorry this is incorrect, you go second!.")
+             return False
+        elif Q1 == "D": 
+             print ("Sorry this is incorrect, you go second!.")
+        else:
+             print ("Sorry, this isnt an answer")
+             
+    if n==2:
+        print("What is the square root of 144 equal? [A/B/C/D]")
+        Q2 = input("A) 12.5 B) 12 C) 1 D) 2 ?").upper()
+        if Q2 in ['A','B','C','D']:
+            if Q2 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q2 == "B": 
+                print("Correct, you go first!.")
+                return True
+            if Q2 == "C":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q2 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+    if n==3:
+        print("Who made Microsoft?[A/B/C/D]")
+        Q3 = input("A)Bill Smith  B) Bill Phil C) Bill Gates D) Bill Paul ?").upper()
+        if Q3 in ['A','B','C','D']:
+            if Q2 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q2 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q2 == "C":
+                print("Correct, you go first!.")
+                return True
+            if Q2 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+
+    if n==4:
+        print("What is half of 200? [A/B/C/D]")
+        Q4 = input("A)150  B) 120 C) 100 D) 102 ?").upper()
+        if Q4 in ['A','B','C','D']:
+            if Q4 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q4 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q4 == "C":
+                print("Correct, you go first!.")
+                return True
+            if Q4 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+
+    if n==5:
+        print("Which of the following is a soap (TV Programme)")
+        Q5 = input("A)Power Rangers  B) Eastenders C) BBC News D) MTV Base ?").upper()
+        if Q5 in ['A','B','C','D']:
+            if Q5 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q5 == "B": 
+                print("Correct, you go first!.")
+                return True
+            if Q5 == "C":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q5 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this an answer")
+            return False
+
+    if n==6:
+        print("How many legs does a spider have?")
+        Q2 = input("A)4  B) 6 C) 8 D) 10 ?").upper()
+        if Q6 in ['A','B','C','D']:
+            if Q6 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q6 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q6 == "C":
+                print("Correct, you go first!.")
+                return True
+            if Q6 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+                
+    if n==7:
+        print("What is the tallest animal in the world?")
+        Q2 = input("A)The giraffe  B) Crocodile C) Bear D) Fox ?").upper()
+        if Q7 in ['A','B','C','D']:
+            if Q7 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q7 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q7 == "C":
+                print("Correct, you go first!.")
+                return True
+            if Q7 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+
+    if n==8:
+        print("How many cheeks do you have?")
+        Q2 = input("A) 2  B) None C) 3 D) 4 ?").upper()
+        if Q8 in ['A','B','C','D']:
+            if Q8 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q8 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q8 == "C":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q8 == "D":
+                print("Correct, you go first!.")
+                return True
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+
+    if n==9:
+        print("How many cheeks do you have?")
+        Q9 = input("A) 2  B) None C) 3 D) 4 ?").upper()
+        if Q9 in ['A','B','C','D']:
+            if Q9 == "A":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q9 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q9 == "C":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q9 == "D":
+                print("Correct, you go first!.")
+                return True
+        else:
+            print("Sorry, this isnt an answer")
+            return False
+
+    if n==10:
+        print("What goes up and never comes down?")
+        Q10 = input("A) Age  B) Football C) Plane D) Rain ?").upper()
+        if Q10 in ['A','B','C','D']:
+            if Q10 == "A":
+                print("Correct, you go first!.")
+                return True
+            if Q10 == "B": 
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q10 == "C":
+                print("Sorry this is incorrect, you go second!")
+                return False
+            if Q10 == "D":
+                print("Sorry this is incorrect, you go second!")
+                return False
+        else:
+            print("Sorry, this isnt an answer")
+            return False
 
 
-StartQ = input("The answer is: A) Barrack Obama? B) Sean Paul? C)Michael Jordan? D)Skepta? [A/B/C/D]? :")
-#Answers to the question    
-if StartQ in ['A', 'B', 'C', 'D']:
+##valid=False
+##while not valid:
+##    try:
+##        ask=int(input("enter a random number between 1-10: "))
+##        if ask in range(1,11):
+##            valid=True
+##        else:
+##            print("Not in range!")
+##    except:
+##        print("That's not a valid number!")
+##qlist = ['1','2','3','4','5','6','7','8','9','10']
+##optionslist = ['A','B','C','D']
+ask=random.randint(1,10)
+winner=Question(ask)
+print(winner)
 
-    if StartQ == "A":
-        print ("Correct, you go first!.") 
-    elif StartQ == "B": 
-        print ("Sorry this is incorrect, you go second!.")
-    elif StartQ == "C": 
-        print ("Sorry this is incorrect, you go second!.")
-    elif StartQ == "D": 
-        print ("Sorry this is incorrect, you go second!.")
-    else:
-        print ("Sorry, this isnt an answer")    
 
