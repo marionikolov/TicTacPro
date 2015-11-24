@@ -19,6 +19,8 @@ class GameClient():
 
     def recv_message(self):
         if self.recvmessages:
+            #buf = pickle.loads(self.recvmessages[0])
+            #del  # try doing it with pop instead
             return pickle.loads(self.recvmessages.pop(0))
         
     def poll(self):
@@ -94,4 +96,4 @@ def online(turn, images):
         gamecli.shutdown()
         
 if __name__=="__main__":
-    online(True, images)
+    online(False, images)
