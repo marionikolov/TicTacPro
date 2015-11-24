@@ -36,10 +36,156 @@ def offline1p(difficulty, turn, images):
                 if difficulty == "easy":
                     pos = (random.randint(10,600), random.randint(10,600))
                 elif difficulty == "medium":
-                    #add code here, V
+                    #This code checks if the computer can win the next move
+                    for i in used:
+                        if used[i] != "x" or used != "o":
+                            oldi = used[i]
+                            used[i] = "o"
+                            isgamewon = gamewon(used)
+                            if isgamewon:
+                                if i == 7:
+                                    pos = (10,10)
+                                elif i == 8:
+                                    pos = (210,400)
+                                elif i == 9:
+                                    pos = (410,600)
+                                elif i == 4:
+                                    pos = (10,200)
+                                elif i == 5:
+                                    pos = (210,400)
+                                elif i == 6:
+                                    pos = (410,600)
+                                elif i == 1 :
+                                    pos = (10,200)
+                                elif i == 2:
+                                    pos = (210,400)
+                                elif i == 3:
+                                    pos = (410,600)  
+                                drawbox(turn,pos,used,images)
+                            else:
+                                used[i] = oldi
+                    
+                    #This checks if the player could win the next move, the computer will block them
+                    for i in used:
+                        if used[i] != "x" or used != "o":
+                            oldi = used[i]
+                            used[i] = "x"
+                            isgamewon = gamewon(used)
+                            if isgamewon:
+                                if i == 7:
+                                    pos = (10,10)
+                                elif i == 8:
+                                    pos = (210,400)
+                                elif i == 9:
+                                    pos = (410,600)
+                                elif i == 4:
+                                    pos = (10,200)
+                                elif i == 5:
+                                    pos = (210,400)
+                                elif i == 6:
+                                    pos = (410,600)
+                                elif i == 1 :
+                                    pos = (10,200)
+                                elif i == 2:
+                                    pos = (210,400)
+                                elif i == 3:
+                                    pos = (410,600)
+                                drawbox(turn,pos,used,images)
+                            else:
+                                used[i] = oldi
+                    print("medium")
                     print("medium")
                 elif difficulty == "hard":
                     #add code here, V
+                    #This code checks if the computer can win the next move
+                    for i in range(0,9):
+                        if used[i] != "x" or used != "o":
+                            oldi = used[i]
+                            used[i] = "o"
+                            isgamewon = gamewon(used)
+                            if isgamewon:
+                                if i == 7:
+                                    pos = (10,10)
+                                elif i == 8:
+                                    pos = (210,400)
+                                elif i == 9:
+                                    pos = (410,600)
+                                elif i == 4:
+                                    pos = (10,200)
+                                elif i == 5:
+                                    pos = (210,400)
+                                elif i == 6:
+                                    pos = (410,600)
+                                elif i == 1 :
+                                    pos = (10,200)
+                                elif i == 2:
+                                    pos = (210,400)
+                                elif i == 3:
+                                    pos = (410,600)  
+                                drawbox(turn,pos,used,images)
+                            else:
+                                used[i] = oldi
+                    
+                    #This checks if the player could win the next move, the computer will block them
+                    for i in range(0,9):
+                        if used[i] != "x" or used != "o":
+                            oldi = used[i]
+                            used[i] = "x"
+                            isgamewon = gamewon(used)
+                            if isgamewon:
+                                if i == 7:
+                                    pos = (10,10)
+                                elif i == 8:
+                                    pos = (210,400)
+                                elif i == 9:
+                                    pos = (410,600)
+                                elif i == 4:
+                                    pos = (10,200)
+                                elif i == 5:
+                                    pos = (210,400)
+                                elif i == 6:
+                                    pos = (410,600)
+                                elif i == 1 :
+                                    pos = (10,200)
+                                elif i == 2:
+                                    pos = (210,400)
+                                elif i == 3:
+                                    pos = (410,600)
+                                drawbox(turn,pos,used,images)
+                            else:
+                                used[i] = oldi
+                            
+                    #The computer will check if the coners are free, it will take the corners
+                    for i in [1,3,7,9]:
+                        if used[i] != "x" or used != "o":
+                            oldi = used[i]
+                            used[i] = "o"
+                            isgamewon = gamewon(used)
+                            if isgamewon:
+                                if i == 7:
+                                    pos = (10,10)
+                                elif i == 9:
+                                    pos = (410,600)
+                                elif i == 1 :
+                                    pos = (10,200)
+                                elif i == 3:
+                                    pos = (410,600)
+                                drawbox(turn,pos,used,images)
+                            else:
+                                used[i] = oldi
+
+                    #This code allows the computer to check if the centre is free, it will take it
+                    for i in [5]:
+                        if used[i] != "x" or used != "o":
+                            oldi = used[i]
+                            used[i] = "o"
+                            isgamewon = gamewon(used)
+                            if isgamewon:
+                                elif i == 5:
+                                    pos = (210,400)
+                                drawbox(turn,pos,used,images)
+                            else:
+                                used[i] = oldi
                     print("hard")
                 valid=validmove(pos,used)
                 if valid:
