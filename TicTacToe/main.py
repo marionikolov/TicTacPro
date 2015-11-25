@@ -62,7 +62,7 @@ except ImportError:
 
 def mainmenu(images):
     """Runs the main menu, it opens the main menu, and allows you to access the rest of the game from here"""
-    q=False
+    q = False
     while not q:
         screen.blit(mainmenuimg,(0,0))
         pygame.display.flip()
@@ -77,8 +77,9 @@ def mainmenu(images):
                 #checks whether the mouse click was on a button, which i have defined by coordinates 
                 if pos[0] in range(50,560) and pos[1] in range(90,180):
                     print("Under Construction!")
-                    whosturn=chooseturn()
-                    online(whosturn)
+                    onlineconnect() #enter host and port information to connect to; then call the whosturn function and the online function
+                    #whosturn=chooseturn()
+                    #online(whosturn)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(190,285):
                     #runs the code that asks who goes first

@@ -33,10 +33,17 @@ def offline2p(turn,images):
             elif event.type == pygame.QUIT:
                 quitgame()
     if isgamewon[0]:
-        if turn: winner="1"
-        else: winner="2"
+        if turn:
+            winner = "1"
+            achievements("won")
+        else:
+            winner = "2"
+            achievements("lost")
         print("The Winner is Player {0}!".format(winner))
-    else: losersound.play(),print("No One Won!")
+    else:
+        achievements("draw")
+        losersound.play()
+        print("No One Won!")
     pygame.mixer.music.fadeout(2000)
     time.sleep(2)
     

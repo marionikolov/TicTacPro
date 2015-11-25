@@ -1,0 +1,154 @@
+2015/11/23 11:24:00 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/23 11:26:24 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/23 11:26:48 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/23 11:34:29 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/23 11:48:55 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/23 11:52:52 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 12:03:48 AM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 12:33:04 PM [server.py] [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 82, in <module>
+    server = servergo()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 33, in __init__
+    self.server.bind((ipaddr, port))    # Bind the socket to the provided host and port.
+OSError: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+2015/11/24 12:33:50 PM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/11/24 12:34:09 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 12:36:50 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 01:53:24 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 02:02:05 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 11:31:51 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/24 11:36:59 PM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/25 12:16:08 AM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/25 12:21:33 AM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/25 12:23:44 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/11/25 12:30:42 AM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/25 12:32:17 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/11/25 12:50:57 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/11/25 12:59:51 AM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
