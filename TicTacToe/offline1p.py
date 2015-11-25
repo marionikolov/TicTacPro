@@ -181,7 +181,7 @@ def offline1p(difficulty, turn, images):
                             used[i] = "o"
                             isgamewon = gamewon(used)
                             if isgamewon:
-                                elif i == 5:
+                                if i == 5:
                                     pos = (210,400)
                                 drawbox(turn,pos,used,images)
                             else:
