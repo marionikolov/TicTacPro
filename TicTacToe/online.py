@@ -1,5 +1,6 @@
 from main import *
 from logic import *
+from chat import *
 import socket, select, pickle, logging
 from subprocess import call
 
@@ -37,14 +38,15 @@ class GameClient():
 
 def online(turn, images, host, port):
     call("dir", shell=True)
-    screen = pygame.display.set_mode((610, 650))
+    screen = pygame.display.set_mode((900, 650))
     pygame.mixer.music.play(-1)
     screen.blit(images[0], (0, 0))
     used = [7, 8, 9, 4, 5, 6, 1, 2, 3]
     pygame.display.flip()
     count = 0
     isgamewon = (False, 9)
-    
+    chat=[]
+    displaystring=""
     try:
         gamecli = GameClient(host, port)
         while True:
@@ -67,10 +69,22 @@ def online(turn, images, host, port):
                         print("That is not a valid move.")
                         nosound.play()
                 # elif mousclick
-
+                
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == 13:
+                        if displaystring!="":
+                            chat.insert(0,("You",displaystring))
+                            gamecli.send_message(displaystring)
+                        displaystring=""
+                        drawlist(chat)
+                    else:   
+                        displaystring,chat=chatinput(event.key,displaystring,chat)
+                    
+                elif event.type == pygame.QUIT:
+                    quitgame()
             gamecli.poll() # Send and receive messages between opponents.
             newmsg = gamecli.recv_message()
-
+        
             if not turn and isinstance(newmsg, tuple):
                 drawbox(turn, newmsg, used, images)
                 clicksound.play()
@@ -82,8 +96,8 @@ def online(turn, images, host, port):
                 turn = not turn
 
             if isinstance(newmsg, str):
-                pass
-
+                chat.insert(0,("Opponent",newmsg))
+                drawlist(chat)
             if count == 9:
                 break
         #######

@@ -65,6 +65,7 @@ def mainmenu(images):
     q = False
     while not q:
         screen.blit(mainmenuimg,(0,0))
+        pygame.draw.rect(screen, (0,0,0), [610, 0, 300, 700], 0)
         pygame.display.flip()
         ev = pygame.event.get()
         #if an event happens such as a keypress or mouse click it will run through this code

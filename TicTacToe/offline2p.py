@@ -1,15 +1,18 @@
 from main import *
 from logic import *
+from chat import *
 
 def offline2p(turn,images):
     """runs the offline 2 player iteration of the game"""
-    screen=pygame.display.set_mode((610, 650))
+    screen=pygame.display.set_mode((900, 650))
     pygame.mixer.music.play(-1)
     screen.blit(images[0],(0,0))
     used=[7,8,9,4,5,6,1,2,3]
     pygame.display.flip()
     count=0
     isgamewon=(False,9)
+    chat=[]
+    displaystring=""
     while count<9 and not isgamewon[0]:
         #every other time this ramdomises
         ev = pygame.event.get()
@@ -32,6 +35,9 @@ def offline2p(turn,images):
                     print("NO") 
             elif event.type == pygame.QUIT:
                 quitgame()
+            elif event.type == pygame.KEYDOWN:
+                displaystring,chat=chatinput(event.key,displaystring,chat)
+
     if isgamewon[0]:
         if turn:
             winner = "1"

@@ -152,3 +152,38 @@ Traceback (most recent call last):
   File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
     data = conn.recv(1024)
 ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/11/26 10:26:48 AM [server.py] global name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "server.py", line 84, in <module>
+    server.play()
+  File "server.py", line 69, in play
+    shutdown()
+NameError: global name 'shutdown' is not defined
+2015/11/26 10:28:48 AM [server.py] global name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "server.py", line 84, in <module>
+    server.play()
+  File "server.py", line 69, in play
+    shutdown()
+NameError: global name 'shutdown' is not defined
+2015/11/26 10:29:40 AM [server.py] global name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "server.py", line 84, in <module>
+    server.play()
+  File "server.py", line 69, in play
+    shutdown()
+NameError: global name 'shutdown' is not defined
+2015/11/26 10:36:17 AM [server.py] global name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "server.py", line 84, in <module>
+    server.play()
+  File "server.py", line 69, in play
+    shutdown()
+NameError: global name 'shutdown' is not defined
+2015/11/26 10:42:32 AM [server.py] global name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "server.py", line 84, in <module>
+    server.play()
+  File "server.py", line 69, in play
+    shutdown()
+NameError: global name 'shutdown' is not defined
