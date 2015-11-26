@@ -10,13 +10,13 @@ def printcoord(x,y,text):
     screen.blit(text, (x,y))
     pygame.display.flip()
     
-def print(text):
-    """changes the print function to now print to the gui 'status bar' """
-    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
-    font = pygame.font.Font(None, 32)
-    textg = font.render(str(text), 4, (255, 255, 255))
-    screen.blit(textg, (40,615))
-    pygame.display.flip()
+##def print(text):
+##    """changes the print function to now print to the gui 'status bar' """
+##    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
+##    font = pygame.font.Font(None, 32)
+##    textg = font.render(str(text), 4, (255, 255, 255))
+##    screen.blit(textg, (40,615))
+##    pygame.display.flip()
     
 def quitgame():
     """Quits the GUI"""

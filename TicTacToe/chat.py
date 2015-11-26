@@ -1,6 +1,8 @@
 from main import *
+from logic import *
 screen=pygame.display.set_mode((900, 650))
 def main():
+    pygame.draw.rect(screen, (0,100,120), [610, 0, 300, 700], 0)
     chat=[]
     displaystring=""
     turn=True
@@ -24,7 +26,7 @@ def main():
                 elif event.key == 8:
                     displaystring=displaystring[:-1]
 
-                showinput(displaystring)
+                    showinput(displaystring)
                 
 def showinput(string):
     string=(": "+string)
@@ -45,7 +47,7 @@ def drawlist(chat):
             chatstuff = font.render(each, 4, (255, 255, 255))
             screen.blit(chatstuff, (620,y))
             y-=40
-        else:
+        else:s
             print("Too long can't display!")
         pygame.display.flip()
 if __name__=="__main__":
