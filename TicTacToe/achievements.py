@@ -1,44 +1,42 @@
 from main import *
 from logic import *
 import pickle
-global number_of_games
-global games_won
-global games_lost
-global games_draw
-global reputation
-number_of_games=0
-games_won=0
-games_lost=0
-game_draw=0
-reputation=0
+#0=number of games
+#1=games won
+#2=games lost
+#3=games draw
+#4=reputation
+
 def achievements(res):
-    achievements = {1:"Congratulations on your win. You are lever 1!", 2:"You are level 2"}
+    #load
+    pickle_in = open("doc.pickle","rb")
+    stats=pickle.load(pickle_in)
+    stats = [0,0,0,0,0]
+    #achievements = {1:"Congratulations on your win. You are lever 1!", 2:"You are level 2"}
+    if res == "won":
+        stats[0]+=1
+        stats[1]+=1
+        stats[4]+=2
+        print("Your level is " + str(stats[4]))
+    elif res == "lost":
+        stats[0]+=1
+        stats[2]+=1
+        stats[4]-=1
+        if stats[4]<=0:
+            print("You are still on level 1")
+        else:
+            print("You are on level " + str(stats[4]))
+    
+    elif res == "draw":
+        stats[0]+=1
+        stats[3]+=1
+        stats[4]+=1
+        print("You are on level " + str(stats[4]))
+
+    #save
     pickle_out = open("doc.pickle","wb")
-    pickle.dump(achievements, pickle_out)
+    pickle.dump(stats, pickle_out)
     pickle_out.close()
     
-    if res == "won":
-        global number_of_games
-        number_of_games = int(number_of_games) + 1
-        global games_won
-        games_won = int(games_won) + 1
-        global reputation
-        reputation = int(reputation) + 1
-        print(achievements[int(reputation)])
-        print("Your game/ratio is " + str(number_of_games))
-    elif res == "lost":
-        if number_of_games >0 :
-            global game_lost
-            number_of_games = int(number_of_games) + 1
-            games_lost = int(games_lost) + 1
-            print("Your game/ratio is " + str(number_of_games))
-        if number_of_games <= 0:
-            print("You are still on level 1!")
-    elif res == "draw":
-        number_of_games = int(number_of_games) + 1
-        games_draw = int(games_draw) + 1
-        print("Your game/ratio is " + str(number_of_games))
-
-
 if __name__=="__main__":
     achievements("won")
