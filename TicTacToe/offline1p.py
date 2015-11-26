@@ -1,6 +1,8 @@
 from main import *
 from logic import *
+from achievements import *
 import random
+import time
 
 def offline1p(difficulty, turn, images):
     """runs the offline 1 player iteration of the game"""
@@ -203,6 +205,8 @@ def offline1p(difficulty, turn, images):
         if turn:
             winner="1"
             print("The Winner is Player {0}!".format(winner))
+            time.sleep(5)
+            print(achievements("won"))
         else:
             winner="2"
             print("The Winner is Player {0}!".format(winner)) 

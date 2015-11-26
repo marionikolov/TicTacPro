@@ -1,51 +1,38 @@
 from main import *
-import pickle
-
-achievements = {1:"Congratulations on your win. You are lever 1!", 2:"You are level 2"}
-pickle_out = open("achievements.pickle","wb")
-pickle.dump(achievements, pickle_out)
-pickle_out.close()
-
-
 
 def achievements(res):
-    f = open()
-    pickledlist = pickle.load(f)
-    games = pickledlist[0]
-    gameswon = pickledlist[1]
-    gameslost = pickledlist[2]
-    gamesdraw = pickledlist[3]
-    ratio = pickledlist[4]
-
-    games += 1
+    import pickle
+    global number_of_games = 0
+    global games_won = 0
+    global games_lost = 0
+    global games_draw = 0
+    global reputation = 0
+    
+    achievements = {1:"Congratulations on your win. You are lever 1!", 2:"You are level 2"}
+    pickle_out = open("doc.pickle","wb")
+    pickle.dump(achievements, pickle_out)
+    pickle_out.close()
+    
     if res == "won":
-        gameslost += 1
-        result = achievements[int(number_of_games)]
-        print(result)
+        global number_of_games
+        number_of_games = int(number_of_games) + 1
+        global games_won
+        games_won = int(games_won) + 1
+        global reputation
+        reputation = int(reputation) + 1
+        print(achievements[int(reputation)])
         print("Your game/ratio is " + str(number_of_games))
     elif res == "lost":
-        gameslost += 1
-
-
-        if number_of_games > 0 :
-            number_of_games = int(number_of_games) - 1
-            result = achievements[int(number_of_games)]
-            print(result)
+        if number_of_games >0 :
+            number_of_games = int(number_of_games) + 1
+            games_lost = int(games_lost) + 1
             print("Your game/ratio is " + str(number_of_games))
         if number_of_games <= 0:
             print("You are still on level 1!")
     elif res == "draw":
-        gamesdraw += 1
-        number_of_games = int(number_of_games) + 0
-        result = achievements[int(number_of_games)]
-        print(result)
+        number_of_games = int(number_of_games) + 1
+        games_draw = int(games_draw) + 1
         print("Your game/ratio is " + str(number_of_games))
-
-    if games != 0:
-        ratio = (gameswon - gameslost) / games
-    else:
-        ratio = 0
-
 
 
 if __name__=="__main__":
