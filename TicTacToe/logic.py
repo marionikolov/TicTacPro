@@ -1,31 +1,54 @@
+"""
+============================== TicTacPro ==============================
+FILE: Logic.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+The logic.py file has code used by multiple files of the program, a shared code file
+such as the game logic, drawing the board, print functions etc
+USAGE:
+This is a client file as it is for the drawing and logic aspect of the game.
+"""
+
 from main import *
 from settings import *
-"""Shared functions throughout the entire program for drawing the board etc
-"""
-def printcoord(x,y,text):
-    """lets you draw text anywhere on the screen, you have to pass in
-    coord for the top left corner"""
+
+def print(text,x=40,y=615):
+    """
+    FUNCTION NAME: printcoord()
+    PARAMETERS: 3
+        text (string; mandatory): 
+        x (integer; optional"): The X co-ordinate of the top left corner of the text output
+        y (integer; optional"): The Y co-ordinate of the top left corner of the text output
+                
+    FUNCTION DESCRIPTION:
+    lets you draw text anywhere on the screen via the coordinates of the top left
+    corner of the text displayed, if no coordinates are passed in it defaults to the bottom left of
+    the screen which I have designated as the display bar section.
+    """
+    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
     font = pygame.font.Font(None, 32)
-    text = font.render(text3, 4, (255, 255, 255))
-    screen.blit(text, (x,y))
+    textg = font.render(str(text), 4, (255, 255, 255))
+    screen.blit(textg, (x,y))
     pygame.display.flip()
     
-##def print(text):
-##    """changes the print function to now print to the gui 'status bar' """
-##    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
-##    font = pygame.font.Font(None, 32)
-##    textg = font.render(str(text), 4, (255, 255, 255))
-##    screen.blit(textg, (40,615))
-##    pygame.display.flip()
-    
 def quitgame():
-    """Quits the GUI"""
+    """
+    FUNCTION NAME: quitgame()
+    PARAMETERS: 0
+    FUNCTION DESCRIPTION:
+    excecutes the correct procedure for closing the program.
+    """
     pygame.quit()
     sys.exit()
     
 def gamewon(used):
-    """Decides wether the game is won taking in the used table
-    that indicates current game state"""
+    """
+    FUNCTION NAME: gamewon()
+    PARAMETERS: 1
+        used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
+    Decides wether the game is won taking in the used table
+    that indicates current game state and checking if there are 3 in a row"""
     if used[0]==used[1] and used[1]==used[2]: return (True,1)
     elif used[3]==used[4] and used[4]==used[5]: return (True,2)
     elif used[6]==used[7] and used[7]==used[8]: return (True,3)
@@ -35,10 +58,17 @@ def gamewon(used):
     elif used[0]==used[4] and used[4]==used[8]: return (True,7)
     elif used[2]==used[4] and used[4]==used[6]: return (True,8)
     else: return (False,999)
+    
 def validmove(pos,used):
-    """Takes in the coordanates of the mouse and calculates where on the board that is"""
+    """
+    FUNCTION NAME: validmove()
+    PARAMETERS: 2
+        pos (tuple; mandatory): A tuple containing the coordinate of a mouse click (0-620,0-690)
+        used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
+    """
     #rickageddon
     rickcheck(pos)
+    
     if pos[0] in range(10,200) and pos[1] in range(10,200): sqr=0       
     elif pos[0] in range(210,400) and pos[1] in range(10,200): sqr=1
     elif pos[0] in range(410,600) and pos[1] in range(10,200): sqr=2
