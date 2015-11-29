@@ -18,7 +18,6 @@ except:
         pass
     raise SystemExit
 
-
 pygame.init()
 #game wide initalistion, starts all the relevant aspects to the game and loads the standard images
 pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
@@ -42,6 +41,7 @@ losersound=pygame.mixer.Sound("music/fx/loser.wav")
 nosound=pygame.mixer.Sound("music/fx/no.wav")
 random=pygame.mixer.Sound("music/fx/random.wav")
 mainmenuimg=pygame.image.load("images/menu/mainmenu.png")
+
 #imports each file so the functions can be called and run in this program
 try:
     from offline2p import *
@@ -60,7 +60,7 @@ except ImportError:
         pass
     raise SystemExit
 
-def mainmenu(images):
+def mainmenu(images, host="localhost", port=12341):
     """Runs the main menu, it opens the main menu, and allows you to access the rest of the game from here"""
     q = False
     while not q:
@@ -79,9 +79,9 @@ def mainmenu(images):
                 #checks whether the mouse click was on a button, which i have defined by coordinates 
                 if pos[0] in range(50,560) and pos[1] in range(90,180):
                     print("Under Construction!")
-                    onlineconnect() #enter host and port information to connect to; then call the whosturn function and the online function
+                    #onlineconnect() #enter host and port information to connect to; then call the whosturn function and the online function
                     #whosturn=chooseturn()
-                    #online(whosturn)
+                    online(True, images, host, port)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(190,285):
                     #runs the code that asks who goes first
@@ -123,5 +123,8 @@ if __name__=="__main__":
     time.sleep(2)
     pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
     screen=pygame.display.set_mode((610, 650))
-    mainmenu(images)
-    
+    if len(sys.argv) > 1: # If the game was started through the launcher, pass the host and port from the arguments variable.
+        mainmenu(images, sys.argv[1], int(sys.argv[2]))
+    else: # If the game was started by opening the main.py file, show the following message and exit the game.
+        print("Start the game using the TicTacProLauncher.py file.")
+        time.sleep(5)

@@ -187,3 +187,24 @@ Traceback (most recent call last):
   File "server.py", line 69, in play
     shutdown()
 NameError: global name 'shutdown' is not defined
+2015/11/29 12:57:24 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/11/29 01:09:52 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/11/29 03:19:38 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined

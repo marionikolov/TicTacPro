@@ -2,7 +2,6 @@ from main import *
 from logic import *
 from chat import *
 import socket, select, pickle, logging
-from subprocess import call
 
 class GameClient():
     def __init__(self, host="localhost", port=12341):
@@ -37,7 +36,6 @@ class GameClient():
                 self.messages.remove(i)
 
 def online(turn, images, host, port):
-    call("dir", shell=True)
     screen = pygame.display.set_mode((900, 650))
     pygame.mixer.music.play(-1)
     screen.blit(images[0], (0, 0))
@@ -68,8 +66,7 @@ def online(turn, images, host, port):
                     else:
                         print("That is not a valid move.")
                         nosound.play()
-                # elif mousclick
-                
+
                 elif event.type == pygame.KEYDOWN:
                     if event.key == 13:
                         if displaystring!="":
@@ -82,6 +79,7 @@ def online(turn, images, host, port):
                     
                 elif event.type == pygame.QUIT:
                     quitgame()
+                    
             gamecli.poll() # Send and receive messages between opponents.
             newmsg = gamecli.recv_message()
         
@@ -100,7 +98,7 @@ def online(turn, images, host, port):
                 drawlist(chat)
             if count == 9:
                 break
-        #######
+
         if isgamewon:
             if turn:
                 winner="1"

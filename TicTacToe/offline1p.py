@@ -209,8 +209,14 @@ def offline1p(difficulty, turn, images):
             achievements("won")
         else:
             winner="2"
-            print("The Winner is Player {0}!".format(winner)) 
-    else: losersound.play(),print("No One Won!")
+            print("The Winner is Player {0}!".format(winner))
+            time.sleep(2)
+            achievements("lost")
+    else:
+        losersound.play()
+        print("No One Won!")
+        time.sleep(2)
+        achievements("draw")
     pygame.mixer.music.fadeout(2000)
     time.sleep(2)
     
