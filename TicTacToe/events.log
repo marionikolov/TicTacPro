@@ -208,3 +208,17 @@ Traceback (most recent call last):
   File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
     shutdown()
 NameError: name 'shutdown' is not defined
+2015/11/30 10:05:49 AM [server.py] [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 82, in <module>
+    server = servergo()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 33, in __init__
+    self.server.bind((ipaddr, port))    # Bind the socket to the provided host and port.
+OSError: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+2015/11/30 10:06:52 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
