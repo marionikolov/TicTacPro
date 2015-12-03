@@ -4,6 +4,64 @@ from achievements import *
 import random
 import time
 
+def AIwinNext(used): #This code checks if the computer can win the next move
+    for i in range(len(used)):
+        if used[i] != "x" or used[i] != "o":
+            oldi = used[i]
+            used[i] = "o"
+            isgamewoncheck = gamewon(used)
+            used[i] = oldi
+            if isgamewoncheck:
+                if i == 7:
+                    return (10,10)
+                elif i == 8:
+                    return (210,400)
+                elif i == 9:
+                    return (410,600)
+                elif i == 4:
+                    return (10,200)
+                elif i == 5:
+                    return (210,400)
+                elif i == 6:
+                    return (410,600)
+                elif i == 1:
+                    return (10,200)
+                elif i == 2:
+                    return (210,400)
+                elif i == 3:
+                    return (410,600)
+            else:
+                return None
+
+def AIblockNext(used): #This checks if the player could win the next move, the computer will block them
+    for i in range(len(used)):
+        if used[i] != "x" or used[i] != "o":
+            oldi = used[i]
+            used[i] = "x"
+            isgamewoncheck = gamewon(used)
+            used[i] = oldi
+            if isgamewoncheck:
+                if i == 7:
+                    return (10,10)
+                elif i == 8:
+                    return (210,400)
+                elif i == 9:
+                    return (410,600)
+                elif i == 4:
+                    return (10,200)
+                elif i == 5:
+                    return (210,400)
+                elif i == 6:
+                    return (410,600)
+                elif i == 1 :
+                    return (10,200)
+                elif i == 2:
+                    return (210,400)
+                elif i == 3:
+                    return (410,600)
+            else:
+                return None
+
 def offline1p(difficulty, turn, images):
     """runs the offline 1 player iteration of the game"""
     screen=pygame.display.set_mode((610, 650))
@@ -38,69 +96,15 @@ def offline1p(difficulty, turn, images):
                 if difficulty == "easy":
                     pos = (random.randint(10,600), random.randint(10,600))
                 elif difficulty == "medium":
-                    #This code checks if the computer can win the next move
-                    for i in used:
-                        if used[i] != "x" or used != "o":
-                            oldi = used[i]
-                            used[i] = "o"
-                            isgamewon = gamewon(used)
-                            if isgamewon:
-                                if i == 7:
-                                    pos = (10,10)
-                                elif i == 8:
-                                    pos = (210,400)
-                                elif i == 9:
-                                    pos = (410,600)
-                                elif i == 4:
-                                    pos = (10,200)
-                                elif i == 5:
-                                    pos = (210,400)
-                                elif i == 6:
-                                    pos = (410,600)
-                                elif i == 1 :
-                                    pos = (10,200)
-                                elif i == 2:
-                                    pos = (210,400)
-                                elif i == 3:
-                                    pos = (410,600)  
-                                drawbox(turn,pos,used,images)
-                            else:
-                                used[i] = oldi
-                    
-                    #This checks if the player could win the next move, the computer will block them
-                    for i in used:
-                        if used[i] != "x" or used != "o":
-                            oldi = used[i]
-                            used[i] = "x"
-                            isgamewon = gamewon(used)
-                            if isgamewon:
-                                if i == 7:
-                                    pos = (10,10)
-                                elif i == 8:
-                                    pos = (210,400)
-                                elif i == 9:
-                                    pos = (410,600)
-                                elif i == 4:
-                                    pos = (10,200)
-                                elif i == 5:
-                                    pos = (210,400)
-                                elif i == 6:
-                                    pos = (410,600)
-                                elif i == 1 :
-                                    pos = (10,200)
-                                elif i == 2:
-                                    pos = (210,400)
-                                elif i == 3:
-                                    pos = (410,600)
-                                drawbox(turn,pos,used,images)
-                            else:
-                                used[i] = oldi
-                    print("medium")
-                    print("medium")
+                    pos = None
+                    while pos is None:
+                        pos = AIwinNext(used)
+                        pos = AIblockNext(used)
+                        pos = (random.randint(10,600), random.randint(10,600))
                 elif difficulty == "hard":
                     #add code here, V
                     #This code checks if the computer can win the next move
-                    for i in range(0,9):
+                    for i in range(len(used)):
                         if used[i] != "x" or used != "o":
                             oldi = used[i]
                             used[i] = "o"
@@ -129,7 +133,7 @@ def offline1p(difficulty, turn, images):
                                 used[i] = oldi
                     
                     #This checks if the player could win the next move, the computer will block them
-                    for i in range(0,9):
+                    for i in range(len(used)):
                         if used[i] != "x" or used != "o":
                             oldi = used[i]
                             used[i] = "x"
@@ -222,4 +226,4 @@ def offline1p(difficulty, turn, images):
     
 
 if __name__=="__main__":
-    offline1p("easy",True,images)
+    offline1p("medium",True,images)

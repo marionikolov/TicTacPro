@@ -52,6 +52,7 @@ try:
     from firstgo import *
     from settings import *
     from logic import *
+    from achievementsview import *
 #if any files are missing will let you know what is missing
 except ImportError:
     print("Error - You're missing game files!")
@@ -85,12 +86,12 @@ def mainmenu(images, host="localhost", port=12341):
                     
                 elif pos[0] in range(50,560) and pos[1] in range(190,285):
                     #runs the code that asks who goes first
-                    whosturn=chooseturn()
+                    whosturn=askquestion()
                     #launches the offline 1p state
                     offline1p("easy",whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(290,385):
-                    whosturn=chooseturn()
+                    whosturn=askquestion()
                     offline2p(whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
@@ -100,8 +101,7 @@ def mainmenu(images, host="localhost", port=12341):
                         images=possimages
                     
                 elif pos[0] in range(50,560) and pos[1] in range(490,585):
-                    print("Under Construction!")
-                    achievements()
+                    achievementsview()
 
                 elif pos[0] in range(534,600) and pos[1] in range(15,73):
                     #quits the game and leaves the loop
@@ -127,4 +127,6 @@ if __name__=="__main__":
         mainmenu(images, sys.argv[1], int(sys.argv[2]))
     else: # If the game was started by opening the main.py file, show the following message and exit the game.
         print("Start the game using the TicTacProLauncher.py file.")
+        #debug
+        #mainmenu(images, "localhost", 12341)
         time.sleep(5)

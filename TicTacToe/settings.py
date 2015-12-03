@@ -59,7 +59,9 @@ def songmenu():
                 elif pos[0] in range(30,200) and pos[1] in range(370,510):
                     print("Music Changed - Nostalgia!")
                     pygame.mixer.music.load("music/oldschool.mp3")
-                    
+                elif pos[0] in range(400,600) and pos[1] in range(370,510):
+                    print("Music Changed - Oh, Christmas Tree!")
+                    pygame.mixer.music.load("music/christmas.mp3")
                 elif pos[0] in range(23,204) and pos[1] in range(540,600):
                     q=True
 def stylemenu():

@@ -7,7 +7,6 @@ def achievements(res):
     f = open("achievements.pickle","rb")
     stats = pickle.load(f)
     f.close()
-    print(stats)
     #1-games played, 2-games won 3-games lost 4 - games draw 5 - level
 
     if res == "won":

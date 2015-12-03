@@ -1,6 +1,7 @@
 from main import *
 from logic import *
 from chat import *
+from firstgo import *
 import socket, select, pickle, logging
 
 class GameClient():
@@ -47,6 +48,7 @@ def online(turn, images, host, port):
     displaystring=""
     try:
         gamecli = GameClient(host, port)
+        myturn = askquestion()
         while True:
             ev = pygame.event.get()
             for event in ev:
