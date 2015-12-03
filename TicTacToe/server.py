@@ -66,7 +66,7 @@ class servergo():
                 data = conn.recv(1024)
                 if not data: # If no data is received, the client has disconnected. Close the connection and end the online game.
                     conn.close()
-                    shutdown()
+                    self.shutdown()
                 elif data: # If data is received, send it to the other client.
                     for client in self.connections:
                         if client != conn:
