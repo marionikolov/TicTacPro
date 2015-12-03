@@ -37,18 +37,32 @@ class GameClient():
                 self.messages.remove(i)
 
 def online(turn, images, host, port):
-    screen = pygame.display.set_mode((900, 650))
-    pygame.mixer.music.play(-1)
-    screen.blit(images[0], (0, 0))
     used = [7, 8, 9, 4, 5, 6, 1, 2, 3]
-    pygame.display.flip()
     count = 0
     isgamewon = (False, 9)
     chat=[]
     displaystring=""
     try:
         gamecli = GameClient(host, port)
-        myturn = askquestion()
+        
+        myturn = None
+        while True:
+            if myturn is None:
+                myturn = askquestion()
+                gamecli.send_message(myturn)
+            gamecli.poll() # Send and receive messages between opponents.
+            newmsg = gamecli.recv_message()
+            if myturn is not None and newmsg is not None:
+                if myturn == newmsg:
+                    print("Both players answered correctly. Try again.")
+                    myturn = None
+                else:
+                    break
+        screen = pygame.display.set_mode((900, 650))
+        pygame.mixer.music.play(-1)
+        screen.blit(images[0], (0, 0))
+        pygame.display.flip()
+
         while True:
             ev = pygame.event.get()
             for event in ev:

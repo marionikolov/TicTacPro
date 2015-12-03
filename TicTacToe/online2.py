@@ -1,8 +1,8 @@
 from main import *
 from logic import *
 from chat import *
+from firstgo import *
 import socket, select, pickle, logging
-from subprocess import call
 
 class GameClient():
     def __init__(self, host="localhost", port=12341):
@@ -37,18 +37,32 @@ class GameClient():
                 self.messages.remove(i)
 
 def online(turn, images, host, port):
-    call("dir", shell=True)
-    screen = pygame.display.set_mode((900, 650))
-    pygame.mixer.music.play(-1)
-    screen.blit(images[0], (0, 0))
     used = [7, 8, 9, 4, 5, 6, 1, 2, 3]
-    pygame.display.flip()
     count = 0
     isgamewon = (False, 9)
     chat=[]
     displaystring=""
     try:
         gamecli = GameClient(host, port)
+        
+        myturn = None
+        while True:
+            if myturn is None:
+                myturn = askquestion()
+                gamecli.send_message(myturn)
+            gamecli.poll() # Send and receive messages between opponents.
+            newmsg = gamecli.recv_message()
+            if myturn is not None and newmsg is not None:
+                if myturn == newmsg:
+                    print("Both players answered correctly. Try again.")
+                    myturn = None
+                else:
+                    break
+        screen = pygame.display.set_mode((900, 650))
+        pygame.mixer.music.play(-1)
+        screen.blit(images[0], (0, 0))
+        pygame.display.flip()
+
         while True:
             ev = pygame.event.get()
             for event in ev:
@@ -68,8 +82,7 @@ def online(turn, images, host, port):
                     else:
                         print("That is not a valid move.")
                         nosound.play()
-                # elif mousclick
-                
+
                 elif event.type == pygame.KEYDOWN:
                     if event.key == 13:
                         if displaystring!="":
@@ -79,12 +92,13 @@ def online(turn, images, host, port):
                         drawlist(chat)
                     else:   
                         displaystring,chat=chatinput(event.key,displaystring,chat)
+                    
                 elif event.type == pygame.QUIT:
                     quitgame()
-                
+                    
             gamecli.poll() # Send and receive messages between opponents.
             newmsg = gamecli.recv_message()
-
+        
             if not turn and isinstance(newmsg, tuple):
                 drawbox(turn, newmsg, used, images)
                 clicksound.play()
@@ -98,10 +112,9 @@ def online(turn, images, host, port):
             if isinstance(newmsg, str):
                 chat.insert(0,("Opponent",newmsg))
                 drawlist(chat)
-
             if count == 9:
                 break
-        #######
+
         if isgamewon:
             if turn:
                 winner="1"
@@ -120,4 +133,4 @@ def online(turn, images, host, port):
         gamecli.shutdown()
 
 if __name__=="__main__":
-    online(False, images, "localhost", 12341)
+    online(True, images, "localhost", 12341)

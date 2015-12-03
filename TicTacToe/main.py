@@ -91,8 +91,7 @@ def mainmenu(images, host="localhost", port=12341):
                     offline1p("easy",whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(290,385):
-                    whosturn=askquestion()
-                    offline2p(whosturn,images)
+                    offline2p(True,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
                     possimages=settingmenu()
@@ -126,7 +125,7 @@ if __name__=="__main__":
     if len(sys.argv) > 1: # If the game was started through the launcher, pass the host and port from the arguments variable.
         mainmenu(images, sys.argv[1], int(sys.argv[2]))
     else: # If the game was started by opening the main.py file, show the following message and exit the game.
-        print("Start the game using the TicTacProLauncher.py file.")
+        #print("Start the game using the TicTacProLauncher.py file.")
         #debug
-        #mainmenu(images, "localhost", 12341)
+        mainmenu(images, "localhost", 12341)
         time.sleep(5)

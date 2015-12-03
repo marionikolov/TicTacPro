@@ -51,18 +51,16 @@ def songmenu():
                 if pos[0] in range(30,200) and pos[1] in range(160,300):
                     print("Music Changed - Harder!")
                     pygame.mixer.music.load("music/harder.mp3")
-                    
                 elif pos[0] in range(400,600) and pos[1] in range(160,300):
                     print("Music Changed - Lucky!")
-                    pygame.mixer.music.load("music/lucky.mp3")                
-
+                    pygame.mixer.music.load("music/lucky.mp3")
                 elif pos[0] in range(30,200) and pos[1] in range(370,510):
                     print("Music Changed - Nostalgia!")
                     pygame.mixer.music.load("music/oldschool.mp3")
                 elif pos[0] in range(400,600) and pos[1] in range(370,510):
                     print("Music Changed - Oh, Christmas Tree!")
                     pygame.mixer.music.load("music/christmas.mp3")
-                elif pos[0] in range(23,204) and pos[1] in range(540,600):
+                elif pos[0] in range(23,204) and pos[1] in range(540,600): # Back button.
                     q=True
 def stylemenu():
     stylesmenu=pygame.image.load("images/menu/settings/stylemenu.png")
@@ -97,7 +95,14 @@ def stylemenu():
                     ]
                     
                 elif pos[0] in range(30,200) and pos[1] in range(370,510):
-                    print("Board Loaded - Jungle")
+                    print("Board Loaded - Christmas")
+                    images=[
+                    pygame.image.load("images/christmas/board.png"),
+                    pygame.image.load('images/christmas/x.png'),
+                    pygame.image.load('images/christmas/o.png'),
+                    pygame.image.load("images/christmas/xwon.png"),
+                    pygame.image.load("images/christmas/owin.png")
+                    ]
                 elif pos[0] in range(400,600) and pos[1] in range(370,510):
                     print("Board Loaded - Underwater")         
                 elif pos[0] in range(23,204) and pos[1] in range(540,600):
@@ -105,7 +110,6 @@ def stylemenu():
                         return images
                     except:
                         return None
-                        
-                    
+                                   
 if __name__=="__main__":
     settingmenu()

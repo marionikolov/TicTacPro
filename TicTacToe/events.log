@@ -222,3 +222,31 @@ Traceback (most recent call last):
   File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
     shutdown()
 NameError: name 'shutdown' is not defined
+2015/12/03 10:18:34 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/12/03 10:19:44 AM [server.py] [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 66, in play
+    data = conn.recv(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2015/12/03 10:20:33 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
+2015/12/03 10:25:24 AM [server.py] name 'shutdown' is not defined
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    shutdown()
+NameError: name 'shutdown' is not defined
