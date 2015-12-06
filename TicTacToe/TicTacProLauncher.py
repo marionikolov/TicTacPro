@@ -35,7 +35,7 @@ def startGame(host, port):
             except:
                 raise OSError("Please install Python 3 to play the game.")
         elif sys.version_info[0] == 3:
-            os.system("python3 main.py " + host + " " + port)
+            os.system("main.py " + host + " " + port)
 
 if __name__ == "__main__":
     print("=========================== Welcome to TicTacPro! ===========================")
