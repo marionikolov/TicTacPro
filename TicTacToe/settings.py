@@ -1,3 +1,13 @@
+"""
+============================== TicTacPro ==============================
+FILE: Settings.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+the Settings.py file is the state in which the program is changing visual
+and audio settings about the game, such as the style or the music or the
+difficulty.
+"""
 from main import *
 
 #0-board

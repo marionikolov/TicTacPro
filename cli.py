@@ -1,3 +1,11 @@
+"""
+-------------Intial File--------------
+
+This is a file built by Jiminy Haynes before finalising the plan for the
+TicTacToe game, it is a line based GUI and was made to test concepts
+and understand the game mechanics better
+"""
+
 import time
 import msvcrt
 import os

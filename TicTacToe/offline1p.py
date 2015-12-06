@@ -1,9 +1,19 @@
+"""
+============================== TicTacPro ==============================
+FILE: Offline1p.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+the Offline1p.py file is the one player state that has AI for deciding where
+the computer should play and also how the computer should act depending on
+the difficulty
+"""
+
 from main import *
 from logic import *
 from achievements import *
 import random
 import time
-
 def AIwinNext(used): #This code checks if the computer can win the next move
     for i in range(len(used)):
         if used[i] != "x" or used[i] != "o":

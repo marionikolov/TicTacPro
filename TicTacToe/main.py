@@ -1,3 +1,13 @@
+"""
+============================== TicTacPro ==============================
+FILE: Main.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+The Main.py file is the central state for the game, initilises the game and
+all it's images and features, it also launches the splash screen when booted.
+"""
+
 #installing all the modules required for this game
 try:
     module="Time"
@@ -32,7 +42,7 @@ pygame.image.load("images/classic/owin.png")
 ]
 rick=pygame.image.load("images/misc/rick.png")
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
-
+difficulty="medium"
 #all sound files from sounddogs.com royalty free and some editied by me
 pygame.mixer.music.load("music/harder.mp3")
 clicksound=pygame.mixer.Sound("music/fx/click.wav")
@@ -52,7 +62,6 @@ try:
     from firstgo import *
     from settings import *
     from logic import *
-    from achievementsview import *
 #if any files are missing will let you know what is missing
 except ImportError:
     print("Error - You're missing game files!")
@@ -89,7 +98,7 @@ def mainmenu(images, host="localhost", port=12341):
                     #runs the code that asks who goes first
                     whosturn=askquestion()
                     #launches the offline 1p state
-                    offline1p("easy",whosturn,images)
+                    offline1p(difficulty,whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(290,385):
                     offline2p(True,images)

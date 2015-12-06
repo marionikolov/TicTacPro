@@ -145,11 +145,12 @@ def drawbox(turn,pos,used,images):
         turn (boolean; mandatory): A boolean value that determines who's turn it is, True for x. False for o)
         pos (tuple; mandatory): A tuple containing the coordinate of a mouse click (0-620,0-690)
         used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
-        images (list; mandatory): A list that stores the games current images for the board to use, stored as objects in a list
+        images (list; mandatory): A list that stores the games current images for the board to use
+         and it stored as objects in a list
 
     FUNCTION DESCRIPTION:
-        Draws the game board, redraws it every time the board is generated. can handle different images sets thanks to the
-        image list
+        Draws the game board, redraws it every time the board is generated. can handle different
+        images sets thanks to the image list
     """
     #box7
     if pos[0] in range(10,200) and pos[1] in range(10,200) and used :
@@ -234,7 +235,8 @@ def drawline(wincombo,turn,images):
     PARAMETERS: 3
         wincombo (integer; mandatory): An integer that represents what combination has been achieved
         turn (boolean; mandatory): A boolean value that determines who's turn it is, True for x. False for o)
-        images (list; mandatory): A list that stores the games current images for the board to use, stored as objects in a list
+        images (list; mandatory): A list that stores the games current images for the board to use,
+        stored as objects in a list
 
     FUNCTION DESCRIPTION:
         When the game is won it creates the effect of the flashing winning boxes

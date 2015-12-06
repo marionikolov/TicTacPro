@@ -1,5 +1,14 @@
 from main import *
 from logic import *
+"""
+============================== TicTacPro ==============================
+FILE: Offline2p.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+the Offline2p.py file is the 2 player offline state of the Tic Tac Toe game,
+allowing 2 players to play against offline on a single system. 
+"""
 
 def offline2p(turn,images):
     """runs the offline 2 player iteration of the game"""
