@@ -102,7 +102,6 @@ def offline1p(difficulty, turn, images):
                         pos = AIblockNext(used)
                         pos = (random.randint(10,600), random.randint(10,600))
                 elif difficulty == "hard":
-                    #add code here, V
                     #This code checks if the computer can win the next move
                     for i in range(len(used)):
                         if used[i] != "x" or used != "o":

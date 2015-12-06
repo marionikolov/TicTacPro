@@ -3,6 +3,7 @@ from logic import *
 
 def offline2p(turn,images):
     """runs the offline 2 player iteration of the game"""
+    #sets up the screen for running the offline2p gamemode
     screen=pygame.display.set_mode((610, 650))
     pygame.mixer.music.play(-1)
     screen.blit(images[0],(0,0))
@@ -14,16 +15,18 @@ def offline2p(turn,images):
         #every other time this ramdomises
         ev = pygame.event.get()
         for event in ev:
+            #checks where you click
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
                 valid=validmove(pos,used)
                 if valid:
+                    #if the input is in a valid position then it will run this code
                     clicksound.play()
                     drawbox(turn,pos,used,images)
                     isgamewon=gamewon(used)
                     count+=1
+                    #isgamewon is a tuple (bool,string of "player 1" or 2"
                     if isgamewon[0]:
-                        #(bool,"PLayer 2")
                         drawline(isgamewon[1],turn,images)
                         break
                     turn=not turn
@@ -32,8 +35,10 @@ def offline2p(turn,images):
                     print("NO") 
             elif event.type == pygame.QUIT:
                 quitgame()
-
+    #this runs when the game is over, either the max number of moves have happened
+    #or someone has won
     if isgamewon[0]:
+        #works out who won, runs the corresponding code
         if turn:
             winner = "1"
             achievements("won")
@@ -42,6 +47,7 @@ def offline2p(turn,images):
             achievements("lost")
         print("The Winner is Player {0}!".format(winner))
     else:
+        
         achievements("draw")
         losersound.play()
         print("No One Won!")

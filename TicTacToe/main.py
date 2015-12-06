@@ -65,6 +65,7 @@ def mainmenu(images, host="localhost", port=12341):
     """Runs the main menu, it opens the main menu, and allows you to access the rest of the game from here"""
     q = False
     while not q:
+        pygame.event.clear
         screen=pygame.display.set_mode((610, 650))
         screen.blit(mainmenuimg,(0,0))
         pygame.draw.rect(screen, (0,0,0), [610, 0, 300, 700], 0)

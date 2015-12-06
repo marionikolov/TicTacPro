@@ -3,13 +3,13 @@ from logic import *
 import pickle
 
 def achievements(res):
-    #achievements = {1:"Congratulations on your win. You are lever 1!", 2:"You are level 2"}
+    #loads the stats from a local file
     f = open("achievements.pickle","rb")
     stats = pickle.load(f)
     f.close()
     #1-games played, 2-games won 3-games lost 4 - games draw 5 - level
-
     if res == "won":
+        #ups the stats
         stats[0]+=1
         stats[1]+=1
         stats[4]+=1
@@ -28,7 +28,7 @@ def achievements(res):
         stats[3]+=1
         stats[4]+=0.5
         print("You are level " + str(stats[4]))
-
+    #closes the stats file
     f = open("achievements.pickle","wb")
     pickle.dump(stats, f)
     f.close()
