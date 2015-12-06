@@ -37,7 +37,7 @@ def quitgame():
     FUNCTION NAME: quitgame()
     PARAMETERS: 0
     FUNCTION DESCRIPTION:
-    excecutes the correct procedure for closing the program.
+        excecutes the correct procedure for closing the program.
     """
     pygame.quit()
     sys.exit()
@@ -47,8 +47,11 @@ def gamewon(used):
     FUNCTION NAME: gamewon()
     PARAMETERS: 1
         used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
-    Decides wether the game is won taking in the used table
-    that indicates current game state and checking if there are 3 in a row"""
+
+    FUNCTION DESCRIPTION:
+        Decides wether the game is won taking in the used table
+        that indicates current game state and checking if there are 3 in a row
+        """
     if used[0]==used[1] and used[1]==used[2]: return (True,1)
     elif used[3]==used[4] and used[4]==used[5]: return (True,2)
     elif used[6]==used[7] and used[7]==used[8]: return (True,3)
@@ -65,6 +68,10 @@ def validmove(pos,used):
     PARAMETERS: 2
         pos (tuple; mandatory): A tuple containing the coordinate of a mouse click (0-620,0-690)
         used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
+
+    FUNCTION DESCRIPTION:
+        Checks the mouse position coordinates against the board "hitboxes" and returns a boolean
+        defining wether the click was in a valid location of a box.
     """
     #rickageddon
     rickcheck(pos)
@@ -132,7 +139,17 @@ def rickcheck(pos):
         pygame.display.flip()
         
 def drawbox(turn,pos,used,images):
-    """Draws the game board, takes in the image
+    """
+    FUNCTION NAME: drawbox()
+    PARAMETERS: 4
+        turn (boolean; mandatory): A boolean value that determines who's turn it is, True for x. False for o)
+        pos (tuple; mandatory): A tuple containing the coordinate of a mouse click (0-620,0-690)
+        used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
+        images (list; mandatory): A list that stores the games current images for the board to use, stored as objects in a list
+
+    FUNCTION DESCRIPTION:
+        Draws the game board, redraws it every time the board is generated. can handle different images sets thanks to the
+        image list
     """
     #box7
     if pos[0] in range(10,200) and pos[1] in range(10,200) and used :
@@ -157,8 +174,7 @@ def drawbox(turn,pos,used,images):
             used[2]="x"
         else:
             screen.blit(images[2],(410,10))
-            used[2]="o"
-            
+            used[2]="o"    
     #box4
     elif pos[0] in range(10,200) and pos[1] in range(210,400):
         if turn:
@@ -183,9 +199,6 @@ def drawbox(turn,pos,used,images):
         else:
             screen.blit(images[2],(410,210))
             used[5]="o"
-
-
-            
     #box1
     elif pos[0] in range(10,200) and pos[1] in range(410,600):
         if turn:
@@ -216,7 +229,16 @@ def drawbox(turn,pos,used,images):
     return used
 
 def drawline(wincombo,turn,images):
-    """when the game is won it creates the effect of the flashing winning boxes"""
+    """ 
+    FUNCTION NAME: drawbox()
+    PARAMETERS: 3
+        wincombo (integer; mandatory): An integer that represents what combination has been achieved
+        turn (boolean; mandatory): A boolean value that determines who's turn it is, True for x. False for o)
+        images (list; mandatory): A list that stores the games current images for the board to use, stored as objects in a list
+
+    FUNCTION DESCRIPTION:
+        When the game is won it creates the effect of the flashing winning boxes
+    """
     xw=images[3]
     ow=images[4]
     x=images[1]
@@ -224,7 +246,6 @@ def drawline(wincombo,turn,images):
     #creates the flashing effect
     for count in range(0,6):
         #changes every other time
-        
         if count/2==count//2:
             winsound.play()
             if wincombo==1:
@@ -258,7 +279,6 @@ def drawline(wincombo,turn,images):
             elif wincombo==8:
                 if turn:screen.blit(xw,(410,10)),screen.blit(xw,(210,210)),screen.blit(xw,(10,410))
                 else:screen.blit(ow,(410,10)),screen.blit(ow,(210,210)),screen.blit(ow,(10,410))
-                
         else:
             if wincombo==1:
                 if turn:screen.blit(x,(10,10)),screen.blit(x,(210,10)),screen.blit(x,(410,10))
