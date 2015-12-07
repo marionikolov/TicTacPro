@@ -1,3 +1,13 @@
+"""
+============================== TicTacPro ==============================
+FILE: TicTacProLauncher.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+the TicTacToeLauncher.py file is the bootstrap for the game, it is used to get
+the server and port if you wish to launch the online version of the game.
+"""
+
 import os, time, sys
 
 def valYN(prompt):

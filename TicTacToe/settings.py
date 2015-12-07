@@ -1,3 +1,13 @@
+"""
+============================== TicTacPro ==============================
+FILE: Settings.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+the Settings.py file is the state in which the program is changing visual
+and audio settings about the game, such as the style or the music or the
+difficulty.
+"""
 from main import *
 
 #0-board
@@ -17,20 +27,26 @@ def print(text):
 
 def settingmenu():
     settingsmenu=pygame.image.load("images/menu/settings/settingsmenu.png")
-    
     q=False
     while not q:
+        #display menu screen
         screen.blit(settingsmenu,(0,0))
         pygame.display.flip()
         ev = pygame.event.get()
+        #EDP
         for event in ev:
             if event.type == pygame.MOUSEBUTTONUP:
+                #pos is the coords for the mouse click
                 pos = pygame.mouse.get_pos()
+                #chooses which menu opens
                 if pos[0] in range(30,200) and pos[1] in range(160,300):
                     images=stylemenu()
                 elif pos[0] in range(400,600) and pos[1] in range(160,300):
                     songmenu()
                 elif pos[0] in range(23,204) and pos[1] in range(540,600):
+                    #if images has been defined it will return it if not it will
+                    #return nothing and the game will continue to use whatever
+                    #images are already loaded
                     try:
                         return images
                     except:
@@ -46,7 +62,7 @@ def songmenu():
         for event in ev:
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
-        
+            
                 if pos[0] in range(30,200) and pos[1] in range(160,300):
                     print("Music Changed - Harder!")
                     pygame.mixer.music.load("music/harder.mp3")
@@ -75,6 +91,8 @@ def stylemenu():
                 
                 if pos[0] in range(30,200) and pos[1] in range(160,300):
                     print("Board Loaded - Classic Board")
+                    #the game pulls images from the list, change the content
+                    #of the list, the images used changes, for ease of use 
                     images=[
                     pygame.image.load("images/classic/board.png"),
                     pygame.image.load('images/classic/x.png'),
@@ -94,7 +112,7 @@ def stylemenu():
                     ]
                     
                 elif pos[0] in range(30,200) and pos[1] in range(370,510):
-                    print("Board Loaded - Christmas")
+                    print("Board Loaded - Christmas Board")
                     images=[
                     pygame.image.load("images/christmas/board.png"),
                     pygame.image.load('images/christmas/x.png'),
@@ -104,7 +122,7 @@ def stylemenu():
                     ]
                     
                 elif pos[0] in range(400,600) and pos[1] in range(370,510):
-                    print("Board Loaded - Mushroom")
+                    print("Board Loaded - Mushroom Board")
                     images=[
                     pygame.image.load("images/mushroom/board.png"),
                     pygame.image.load('images/mushroom/x.png'),

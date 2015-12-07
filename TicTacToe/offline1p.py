@@ -1,3 +1,14 @@
+"""
+============================== TicTacPro ==============================
+FILE: Offline1p.py
+MODIFIED: 15/11/2015
+STATUS: Complete
+FILE DESCRIPTION:
+the Offline1p.py file is the one player state that has AI for deciding where
+the computer should play and also how the computer should act depending on
+the difficulty
+"""
+
 from main import *
 from logic import *
 from achievements import *
