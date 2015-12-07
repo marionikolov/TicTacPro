@@ -36,7 +36,7 @@ class GameClient():
                 conn.send(i)
                 self.messages.remove(i)
 
-def online(turn, images, host, port):
+def online(images, host, port):
     used = [7, 8, 9, 4, 5, 6, 1, 2, 3]
     count = 0
     isgamewon = (False, 9)
@@ -55,8 +55,10 @@ def online(turn, images, host, port):
             if myturn is not None and newmsg is not None:
                 if myturn == newmsg:
                     print("Both players answered correctly. Try again.")
+                    time.sleep(2)
                     myturn = None
                 else:
+                    turn = myturn
                     break
         screen = pygame.display.set_mode((900, 650))
         pygame.mixer.music.play(-1)
@@ -117,20 +119,22 @@ def online(turn, images, host, port):
 
         if isgamewon:
             if turn:
-                winner="1"
+                print("You won! Congratulations!")
+                time.sleep(2)
                 achievements("won")
             else:
-                winner="2"
+                print("Better luck next time!")
+                time.sleep(2)
                 achievements("lost")
-            print("The Winner is Player {0}!".format(winner)) 
         else:
             losersound.play()
+            print("The game is a draw!")
+            time.sleep(2)
             achievements("draw")
-            print("No One Won!")
         pygame.mixer.music.fadeout(2000)
         time.sleep(2)
     finally:
         gamecli.shutdown()
 
 if __name__=="__main__":
-    online(True, images, "localhost", 12341)
+    online(images, "localhost", 12341)

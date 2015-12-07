@@ -36,7 +36,6 @@ def settingmenu():
                     except:
                         return None
 
-
 def songmenu():
     songmenu=pygame.image.load("images/menu/settings/songmenu.png")
     screen.blit(songmenu,(0,0))
@@ -103,8 +102,17 @@ def stylemenu():
                     pygame.image.load("images/christmas/xwon.png"),
                     pygame.image.load("images/christmas/owin.png")
                     ]
+                    
                 elif pos[0] in range(400,600) and pos[1] in range(370,510):
-                    print("Board Loaded - Underwater")         
+                    print("Board Loaded - Mushroom")
+                    images=[
+                    pygame.image.load("images/mushroom/board.png"),
+                    pygame.image.load('images/mushroom/x.png'),
+                    pygame.image.load('images/mushroom/o.png'),
+                    pygame.image.load("images/mushroom/xwon.png"),
+                    pygame.image.load("images/mushroom/owin.png")
+                    ]
+                    
                 elif pos[0] in range(23,204) and pos[1] in range(540,600):
                     try:
                         return images

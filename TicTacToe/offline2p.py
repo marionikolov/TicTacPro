@@ -1,7 +1,7 @@
 from main import *
 from logic import *
 
-def offline2p(turn,images):
+def offline2p(images):
     """runs the offline 2 player iteration of the game"""
     screen=pygame.display.set_mode((610, 650))
     pygame.mixer.music.play(-1)
@@ -9,9 +9,13 @@ def offline2p(turn,images):
     used=[7,8,9,4,5,6,1,2,3]
     pygame.display.flip()
     count=0
+    turn = True
     isgamewon=(False,9)
     while count<9 and not isgamewon[0]:
-        #every other time this ramdomises
+        if turn:
+            print("It is Player 1's turn.")
+        else:
+            print("It is Player 2's turn.")
         ev = pygame.event.get()
         for event in ev:
             if event.type == pygame.MOUSEBUTTONUP:
@@ -23,30 +27,29 @@ def offline2p(turn,images):
                     isgamewon=gamewon(used)
                     count+=1
                     if isgamewon[0]:
-                        #(bool,"PLayer 2")
                         drawline(isgamewon[1],turn,images)
                         break
                     turn=not turn
                 else:
                     nosound.play()
-                    print("NO") 
+                    print("That is not a valid move.") 
             elif event.type == pygame.QUIT:
                 quitgame()
 
     if isgamewon[0]:
         if turn:
             winner = "1"
-            achievements("won")
+            print("The winner is Player {0}!".format(winner))
         else:
             winner = "2"
-            achievements("lost")
-        print("The Winner is Player {0}!".format(winner))
+            print("The winner is Player {0}!".format(winner))
     else:
-        achievements("draw")
         losersound.play()
-        print("No One Won!")
+        print("The game is a draw!")
+        time.sleep(2)
+        achievements("draw")
     pygame.mixer.music.fadeout(2000)
     time.sleep(2)
     
 if __name__=="__main__":
-    offline2p(True,images)
+    offline2p(images)

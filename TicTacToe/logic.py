@@ -152,7 +152,7 @@ def drawbox(turn,pos,used,images):
         image list
     """
     #box7
-    if pos[0] in range(10,200) and pos[1] in range(10,200) and used :
+    if pos[0] in range(10,200) and pos[1] in range(10,200): # and used :
         if turn:
             screen.blit(images[1],(10,10))
             used[0]="x"

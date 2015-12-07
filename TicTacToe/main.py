@@ -61,14 +61,16 @@ except ImportError:
         pass
     raise SystemExit
 
-def mainmenu(images, host="localhost", port=12341):
+def mainmenu(images, host="no", port=0):
     """Runs the main menu, it opens the main menu, and allows you to access the rest of the game from here"""
+    screen=pygame.display.set_mode((610, 650))
+    screen.blit(mainmenuimg,(0,0))
+    pygame.draw.rect(screen, (0,0,0), [610, 0, 300, 700], 0)
+    pygame.display.flip()
+
     q = False
     while not q:
-        screen=pygame.display.set_mode((610, 650))
-        screen.blit(mainmenuimg,(0,0))
-        pygame.draw.rect(screen, (0,0,0), [610, 0, 300, 700], 0)
-        pygame.display.flip()
+        
         ev = pygame.event.get()
         #if an event happens such as a keypress or mouse click it will run through this code
         for event in ev:
@@ -79,10 +81,10 @@ def mainmenu(images, host="localhost", port=12341):
                 pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
                 #checks whether the mouse click was on a button, which i have defined by coordinates 
                 if pos[0] in range(50,560) and pos[1] in range(90,180):
-                    print("Under Construction!")
-                    #onlineconnect() #enter host and port information to connect to; then call the whosturn function and the online function
-                    #whosturn=chooseturn()
-                    online(True, images, host, port)
+                    if  host == "no" and port == 0:
+                        print("Online game play is disabled.")
+                    else:
+                        online(images, host, port)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(190,285):
                     #runs the code that asks who goes first
@@ -91,7 +93,7 @@ def mainmenu(images, host="localhost", port=12341):
                     offline1p("easy",whosturn,images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(290,385):
-                    offline2p(True,images)
+                    offline2p(images)
                     
                 elif pos[0] in range(50,560) and pos[1] in range(390,485):
                     possimages=settingmenu()
@@ -106,7 +108,6 @@ def mainmenu(images, host="localhost", port=12341):
                     #quits the game and leaves the loop
                     quitgame()
                     q=True
-                
 
 if __name__=="__main__":
     #this generates the splash screen for the program, this is run after the loading code as splash screens are traditionally used for that purpose and that's what we're replicating 

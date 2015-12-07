@@ -250,3 +250,30 @@ Traceback (most recent call last):
   File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
     shutdown()
 NameError: name 'shutdown' is not defined
+2015/12/06 05:54:59 PM [server.py] [WinError 10057] A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    self.shutdown()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 47, in shutdown
+    self.server.shutdown(1)
+OSError: [WinError 10057] A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied
+2015/12/06 05:59:28 PM [server.py] [WinError 10057] A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    self.shutdown()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 47, in shutdown
+    self.server.shutdown(1)
+OSError: [WinError 10057] A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied
+2015/12/06 06:04:11 PM [server.py] [WinError 10057] A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied
+Traceback (most recent call last):
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 84, in <module>
+    server.play()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 69, in play
+    self.shutdown()
+  File "D:\OneDrive\Coventry University\TicTacPro\TicTacToe\server.py", line 47, in shutdown
+    self.server.shutdown(1)
+OSError: [WinError 10057] A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied

@@ -54,4 +54,4 @@ if __name__ == "__main__":
     elif ans1 == "N":
         print("You have chosen to not play online during this session.")
         print("If you choose the online mode from the main menu, an exception will be raised.")
-        startGame("localhost", "12341")
+        startGame("no", "0")
