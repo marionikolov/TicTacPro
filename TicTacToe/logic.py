@@ -1,13 +1,16 @@
 """
 ============================== TicTacPro ==============================
-FILE: Logic.py
-MODIFIED: 15/11/2015
+FILE: logic.py
+MODIFIED: 08/12/2015
 STATUS: Complete
 FILE DESCRIPTION:
-The logic.py file has code used by multiple files of the program, a shared code file
-such as the game logic, drawing the board, print functions etc
+    The logic.py file is responsible for the game logic and behavour. It includes
+    functions used to draw the board, validate and draw player moves, determine game
+    outcome and quit the game.
 USAGE:
-This is a client file as it is for the drawing and logic aspect of the game.
+    This file is not meant to be run independently. It serves as the codebase for the
+    aforementioned functions and is used by nearly all other game files. Should the file
+    be run on its own, it will prompt the user to run the TicTacProLauncher.py file.
 """
 
 from main import *
@@ -15,16 +18,15 @@ from settings import *
 
 def print(text,x=40,y=615):
     """
-    FUNCTION NAME: printcoord()
+    FUNCTION NAME: print()
     PARAMETERS: 3
-        text (string; mandatory): 
-        x (integer; optional"): The X co-ordinate of the top left corner of the text output
-        y (integer; optional"): The Y co-ordinate of the top left corner of the text output
-                
+                text (string; mandatory): the output text intended to be shown to the user
+                x (integer; optional): the X coordinate of the top left corner of the text output
+                y (integer; optional): the Y coordinate of the top left corner of the text output              
     FUNCTION DESCRIPTION:
-    lets you draw text anywhere on the screen via the coordinates of the top left
-    corner of the text displayed, if no coordinates are passed in it defaults to the bottom left of
-    the screen which I have designated as the display bar section.
+        Allows drawing text anywhere on the screen via the coordinates of the top left
+        corner of the text displayed. If no coordinates are passed in, it defaults to the bottom left of
+        the screen, which is designated as the display bar section.
     """
     pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
     font = pygame.font.Font(None, 32)
@@ -37,7 +39,7 @@ def quitgame():
     FUNCTION NAME: quitgame()
     PARAMETERS: 0
     FUNCTION DESCRIPTION:
-        excecutes the correct procedure for closing the program.
+        Excecutes the correct procedure for closing the program.
     """
     pygame.quit()
     sys.exit()
@@ -46,11 +48,12 @@ def gamewon(used):
     """
     FUNCTION NAME: gamewon()
     PARAMETERS: 1
-        used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
-
+                used (list; mandatory): the list representation of the board, containing either numbers 1-9, "x" or "o"
     FUNCTION DESCRIPTION:
-        Decides wether the game is won taking in the used table
-        that indicates current game state and checking if there are 3 in a row
+        Decides whether the game is won taking in the used table which indicates the current game state
+        and checking if there are three marks of the same kind in a row. The function return a tuple
+        containing a boolean, corresponding to the state of the game, as its first value and an integer,
+        corresponding to the win combination, as the second.
         """
     if used[0]==used[1] and used[1]==used[2]: return (True,1)
     elif used[3]==used[4] and used[4]==used[5]: return (True,2)
@@ -66,15 +69,13 @@ def validmove(pos,used):
     """
     FUNCTION NAME: validmove()
     PARAMETERS: 2
-        pos (tuple; mandatory): A tuple containing the coordinate of a mouse click (0-620,0-690)
-        used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
-
+                pos (tuple; mandatory): a tuple containing the coordinate of the user mouse click (0-620, 0-690)
+                used (list; mandatory): the list representation of the board, containing either numbers 1-9, "x" or "o"
     FUNCTION DESCRIPTION:
         Checks the mouse position coordinates against the board "hitboxes" and returns a boolean
-        defining wether the click was in a valid location of a box.
+        defining whether the click was in a valid location of a box.
     """
-    #rickageddon
-    rickcheck(pos)
+    rickcheck(pos) # Rickageddon check.
     
     if pos[0] in range(10,200) and pos[1] in range(10,200): sqr=0       
     elif pos[0] in range(210,400) and pos[1] in range(10,200): sqr=1
@@ -94,7 +95,13 @@ def validmove(pos,used):
         return False
 
 def rickcheck(pos):
-    """super special move that rolls the screen"""
+    """
+    FUNCTION NAME: rickcheck()
+    PARAMETERS: 1
+                pos (tuple; mandatory): a tuple containing the coordinate of the user mouse click (0-620, 0-690)
+    FUNCTION DESCRIPTION:
+        Defines a super special move that rolls the screen!
+    """
     if pos[0] in range(580,610) and pos[1] in range(610,640):
         cena=pygame.image.load("images/misc/cena.png")
         pygame.image.save(screen,"images/misc/temp.png")
@@ -142,82 +149,71 @@ def drawbox(turn,pos,used,images):
     """
     FUNCTION NAME: drawbox()
     PARAMETERS: 4
-        turn (boolean; mandatory): A boolean value that determines who's turn it is, True for x. False for o)
-        pos (tuple; mandatory): A tuple containing the coordinate of a mouse click (0-620,0-690)
-        used (list; mandatory): The list representation of the board, either 1-9, "x" or "o".
-        images (list; mandatory): A list that stores the games current images for the board to use
-         and it stored as objects in a list
-
+                turn (boolean; mandatory): a boolean value that determines whose turn it is; True for "x"; False for "o"
+                pos (tuple; mandatory): a tuple containing the coordinate of a mouse click (0-620, 0-690)
+                used (list; mandatory): the list representation of the board, containing either numbers 1-9, "x" or "o"
+                images (list; mandatory): a list that stores the game's current image set for the board to use
     FUNCTION DESCRIPTION:
-        Draws the game board, redraws it every time the board is generated. can handle different
-        images sets thanks to the image list
+        Draws the game board and redraws it every time it is generated. It can handle different
+        image sets using the images list passed in as a parameter.
     """
-    #box7
-    if pos[0] in range(10,200) and pos[1] in range(10,200): # and used :
+    if pos[0] in range(10,200) and pos[1] in range(10,200): # Top left box (7).
         if turn:
             screen.blit(images[1],(10,10))
             used[0]="x"
         else:
             screen.blit(images[2],(10,10))
             used[0]="o"
-    #box8        
-    elif pos[0] in range(210,400) and pos[1] in range(10,200):
+    elif pos[0] in range(210,400) and pos[1] in range(10,200): # Top center box (8).
         if turn:
             screen.blit(images[1],(210,10))
             used[1]="x"
         else:
             screen.blit(images[2],(210,10))
             used[1]="o"
-    #box9
-    elif pos[0] in range(410,600) and pos[1] in range(10,200):
+    elif pos[0] in range(410,600) and pos[1] in range(10,200): # Top right box (9).
         if turn:
             screen.blit(images[1],(410,10))
             used[2]="x"
         else:
             screen.blit(images[2],(410,10))
             used[2]="o"    
-    #box4
-    elif pos[0] in range(10,200) and pos[1] in range(210,400):
+    elif pos[0] in range(10,200) and pos[1] in range(210,400): # Middle left box (4).
         if turn:
             screen.blit(images[1],(10,210))
             used[3]="x"
         else:
             screen.blit(images[2],(10,210))
             used[3]="o"
-    #box5        
-    elif pos[0] in range(210,400) and pos[1] in range(210,400):
+    elif pos[0] in range(210,400) and pos[1] in range(210,400): # Middle center box (5).
         if turn:
             screen.blit(images[1],(210,210))
             used[4]="x"
         else:
             screen.blit(images[2],(210,210))
             used[4]="o"
-    #box6
-    elif pos[0] in range(410,600) and pos[1] in range(210,400):
+    elif pos[0] in range(410,600) and pos[1] in range(210,400): # Middle right box (6).
         if turn:
             screen.blit(images[1],(410,210))
             used[5]="x"
         else:
             screen.blit(images[2],(410,210))
             used[5]="o"
-    #box1
-    elif pos[0] in range(10,200) and pos[1] in range(410,600):
+    elif pos[0] in range(10,200) and pos[1] in range(410,600): # Bottom left box (1).
         if turn:
             screen.blit(images[1],(10,410))
             used[6]="x"
         else:
             screen.blit(images[2],(10,410))
             used[6]="o"
-    #box2        
-    elif pos[0] in range(210,400) and pos[1] in range(410,600):
+    elif pos[0] in range(210,400) and pos[1] in range(410,600): # Bottom center box (2).
         if turn:
             screen.blit(images[1],(210,410))
             used[7]="x"
         else:
             screen.blit(images[2],(210,410))
             used[7]="o"
-    #box3
-    elif pos[0] in range(410,600) and pos[1] in range(410,600):
+    elif pos[0] in range(410,600) and pos[1] in range(410,600): # Bottom right box (3).
         if turn:
             screen.blit(images[1],(410,410))
             used[8]="x"
@@ -231,23 +227,19 @@ def drawbox(turn,pos,used,images):
 
 def drawline(wincombo,turn,images):
     """ 
-    FUNCTION NAME: drawbox()
+    FUNCTION NAME: drawline()
     PARAMETERS: 3
-        wincombo (integer; mandatory): An integer that represents what combination has been achieved
-        turn (boolean; mandatory): A boolean value that determines who's turn it is, True for x. False for o)
-        images (list; mandatory): A list that stores the games current images for the board to use,
-        stored as objects in a list
-
+                wincombo (integer; mandatory): an integer that represents what combination has been achieved
+                turn (boolean; mandatory): a boolean value that determines whose turn it is; True for "x"; False for "o"
+                images (list; mandatory): a list that stores the game's current image set for the board to use
     FUNCTION DESCRIPTION:
-        When the game is won it creates the effect of the flashing winning boxes
+        When the game is won, this function creates the effect of the flashing winning boxes.
     """
     xw=images[3]
     ow=images[4]
     x=images[1]
     o=images[2]
-    #creates the flashing effect
-    for count in range(0,6):
-        #changes every other time
+    for count in range(0,6):    # Creates the flashing effect according to the win pattern.
         if count/2==count//2:
             winsound.play()
             if wincombo==1:
@@ -317,4 +309,4 @@ def drawline(wincombo,turn,images):
         time.sleep(0.5)
 
 if __name__=="__main__":
-    print("you need to run the main program")
+    print("Please launch the game from the TicTacProLauncher.py file.")

@@ -8,6 +8,9 @@ the Online.py file is the online version of the tictactoe game, it allows
 communication between 2 machines through a server, which sends commands for
 not only board positions but also the chat, which allows text communication
 between the 2 clients
+
+
+includes chat
 """
 from main import *
 from logic import *

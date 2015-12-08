@@ -4,13 +4,18 @@ FILE: TicTacProLauncher.py
 MODIFIED: 15/11/2015
 STATUS: Complete
 FILE DESCRIPTION:
-the TicTacToeLauncher.py file is the bootstrap for the game, it is used to get
-the server and port if you wish to launch the online version of the game.
+    The TicTacToeLauncher.py file is the bootstrap for the game. This is the file
+    that should be used to start the game. It prompts the user for a host name and
+    port number port if he wishes to play the game online and starts the game with
+    disabled online multiplayer should no host and port data be provided.
+USAGE:
+    Open the file and follow the prompts.
 """
 
 import os, time, sys
 
 def valYN(prompt):
+    
     while True:
         value = input(prompt).upper()
         if value not in ["Y", "N"]:
@@ -63,5 +68,5 @@ if __name__ == "__main__":
         startGame(host, port)
     elif ans1 == "N":
         print("You have chosen to not play online during this session.")
-        print("If you choose the online mode from the main menu, an exception will be raised.")
+        print("TicTacPro will now initiate with disabled online multiplayer.")
         startGame("no", "0")

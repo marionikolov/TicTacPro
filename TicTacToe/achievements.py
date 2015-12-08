@@ -1,14 +1,14 @@
 """
 ============================== TicTacPro ==============================
-FILE: Acheivements.py
-MODIFIED: 15/11/2015
+FILE: achievements.py
+MODIFIED: 07/12/2015
 STATUS: Complete
 FILE DESCRIPTION:
-The achievements.py file is used for loading and saving the achievements stats to a binary file for
-a more permantant as it means the variables can be tranferred between instances of the game running
-rather than being local to each instance of the program being run.
+    The achievements.py file is used for loading and saving the achievements statistics
+    to a binary file for a more permantant as it means the variables can be tranferred between instances of the game running
+    rather than being local to each instance of the program being run.
 USAGE:
-Used for saving and loading from files
+    The game runs the achievem
 """
 
 from main import *
@@ -48,7 +48,7 @@ def achievements(res):
         stats[3]+=1
         stats[4]+=0.5
         print("You are level " + str(stats[4]))
-    #closes the stats file
+    
     f = open("achievements.pickle","wb")
     pickle.dump(stats, f)
     f.close()
