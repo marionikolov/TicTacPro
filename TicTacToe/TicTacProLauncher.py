@@ -46,7 +46,8 @@ def valport(prompt):
 def startGame(host, port):
         if sys.version_info[0] < 3:
             try:
-                os.system("python3 main.py " + host + " " + port) # If the computer has both Python 2 and Python 3 installed, this will start the game under Python 3.
+                os.system("python3 main.py " + host + " " + port) # If the computer has both Python 2 and Python 3
+                #installed, this will start the game under Python 3.
             except:
                 raise OSError("Please install Python 3 to play the game.")
         elif sys.version_info[0] == 3:

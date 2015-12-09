@@ -35,7 +35,10 @@ class servergo():
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Create an IPv4 TCP socket.
         self.server.bind((ipaddr, port))    # Bind the socket to the provided host and port.
         self.server.listen(2)   # Accept a maximum of 2 client connections.
-        print("TicTacPro server started on host " + str(socket.gethostbyname(socket.gethostname())) + " and port " + str(port)) # Informs the user of the host IP address and the port number. Clients must use this data to connect in order to play multiplayer online.
+        hostname=str(socket.gethostbyname(socket.gethostname()))
+        print("TicTacPro server started on host " + hostname + " and port " + str(port))
+        # Informs the user of the host IP address and the port number.
+        #Clients must use this data to connect in order to play multiplayer online.
         print("")
 
     def shutdown(self):

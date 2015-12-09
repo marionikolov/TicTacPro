@@ -106,7 +106,6 @@ def mainmenu(images, host="no", port=0):
                 elif pos[0] in range(50,485) and pos[1] in range(370,430):
                     possimages=settingmenu()
                     #if the stlye is changed then this code will run, changing what images the program uses
-                    time.sleep(3)
                     if possimages[0]!=None:
                         difficulty=possimages[0]
                     elif possimages[1]!=None:

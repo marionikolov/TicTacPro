@@ -58,7 +58,7 @@ def settingmenu():
                     songmenu()
                 elif pos[0] in range(70,260) and pos[1] in range (380,510):
                     difficulty=difficultymenu()
-                elif pos[0] in range(23,204) and pos[1] in range(540,600):                    #if images has been defined it will return it if not it will
+                elif pos[0] in range(23,204) and pos[1] in range(540,600):
                     #return nothing and the game will continue to use whatever
                     #images are already loaded
                     try:
