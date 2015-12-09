@@ -42,7 +42,6 @@ pygame.image.load("images/classic/owin.png")
 ]
 rick=pygame.image.load("images/misc/rick.png")
 pygame.display.set_caption("TicTacPro Game","TicTacPro")
-difficulty="medium"
 #all sound files from sounddogs.com royalty free and some editied by me
 pygame.mixer.music.load("music/harder.mp3")
 clicksound=pygame.mixer.Sound("music/fx/click.wav")
@@ -73,11 +72,12 @@ except ImportError:
 def mainmenu(images, host="no", port=0):
     """Runs the main menu, it opens the main menu, and allows you to access the rest of the game from here"""
     q = False
+    difficulty="medium"
     while not q:
-        pygame.event.clear
+        pygame.event.clear()
         screen=pygame.display.set_mode((610, 650))
         screen.blit(mainmenuimg,(0,0))
-        pygame.draw.rect(screen, (0,0,0), [610, 0, 300, 700], 0)
+        pygame.draw.rect(screen, (64,0,64), (0,610,650,50), 0)
         pygame.display.flip()
         ev = pygame.event.get()
         #if an event happens such as a keypress or mouse click it will run through this code
@@ -86,33 +86,35 @@ def mainmenu(images, host="no", port=0):
                 quitgame()
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
-                pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
+                pygame.display.flip()
                 #checks whether the mouse click was on a button, which i have defined by coordinates 
-                if pos[0] in range(50,560) and pos[1] in range(90,180):
+                if pos[0] in range(137,560) and pos[1] in range(132,180):
                     if  host == "no" and port == 0:
                         print("Online game play is disabled.")
+                        time.sleep(1)
                     else:
                         online(images, host, port)
-                    
-                elif pos[0] in range(50,560) and pos[1] in range(190,285):
+                elif pos[0] in range(50,485) and pos[1] in range(210,275):
                     #runs the code that asks who goes first
                     whosturn=askquestion()
                     #launches the offline 1p state
                     offline1p(difficulty,whosturn,images)
                     
-                elif pos[0] in range(50,560) and pos[1] in range(290,385):
+                elif pos[0] in range(50,485) and pos[1] in range(290,350):
                     offline2p(images)
                     
-                elif pos[0] in range(50,560) and pos[1] in range(390,485):
+                elif pos[0] in range(50,485) and pos[1] in range(370,430):
                     possimages=settingmenu()
                     #if the stlye is changed then this code will run, changing what images the program uses
-                    if possimages!=None:
-                        images=possimages
-                    
-                elif pos[0] in range(50,560) and pos[1] in range(490,585):
+                    time.sleep(3)
+                    if possimages[0]!=None:
+                        difficulty=possimages[0]
+                    elif possimages[1]!=None:
+                        images=possimages[1]
+                elif pos[0] in range(50,485) and pos[1] in range(450,515):
                     achievementsview()
 
-                elif pos[0] in range(534,600) and pos[1] in range(15,73):
+                elif pos[0] in range(540,595) and pos[1] in range(10,50):
                     #quits the game and leaves the loop
                     quitgame()
                     q=True
@@ -129,6 +131,7 @@ if __name__=="__main__":
     screen.blit(splash,(-30,-200))
     pygame.display.flip()
     time.sleep(2)
+    
     pygame.display.set_icon(pygame.image.load("images/misc/icon.png"))
     screen=pygame.display.set_mode((610, 650))
     if len(sys.argv) > 1: # If the game was started through the launcher, pass the host and port from the arguments variable.
@@ -136,5 +139,5 @@ if __name__=="__main__":
     else: # If the game was started by opening the main.py file, show the following message and exit the game.
         #print("Start the game using the TicTacProLauncher.py file.")
         #debug
-        mainmenu(images, "localhost", 12341)
+        mainmenu(images, "no", 0)
         time.sleep(5)

@@ -30,11 +30,11 @@ def askquestion():
     screen=pygame.display.set_mode((610, 650))
     questionmenu=pygame.image.load("images/menu/questionmenu.png")
     screen.blit(questionmenu,(0,0))
-    print(question[0],90,64)	# Display question.
-    print(question[1],60,260)	# Display answers.
-    print(question[2],330,260)
-    print(question[3],60,500)
-    print(question[4],330,500)    
+    print(question[0],80,100)	# Display question.
+    print(question[1],100,300)	# Display answers.
+    print(question[2],350,300)
+    print(question[3],110,440)
+    print(question[4],350,440)    
     q=False
     choice = 0
     while not q:
@@ -42,15 +42,21 @@ def askquestion():
         ev = pygame.event.get()
         for event in ev:
             if event.type == pygame.MOUSEBUTTONUP:
+                
                 pos = pygame.mouse.get_pos()
-                if pos[0] in range(28,280) and pos[1] in range(238,328):	# Detect which answer is selected.
+                
+                if pos[0] in range(85,275) and pos[1] in range(275,365):	# Detect which answer is selected.
                     choice=1
-                elif pos[0] in range(308,558) and pos[1] in range(238,328):
+                    
+                elif pos[0] in range(335,275) and pos[1] in range(525,365):
                     choice=2
-                elif pos[0] in range(28,280) and pos[1] in range(475,562):
+                    
+                elif pos[0] in range(85,410) and pos[1] in range(275,500):
                     choice=3
-                elif pos[0] in range(308,558) and pos[1] in range(475,562):
+                    
+                elif pos[0] in range(308,410) and pos[1] in range(525,500):
                     choice=4
+                    
                 if choice:
 	                if choice==question[5]:	# Compare the user's answer to the correct answer.
 	                    print("Correct! You go first!")
@@ -60,6 +66,8 @@ def askquestion():
 	                    print("That's not correct! You go second.")
 	                    time.sleep(2)
 	                    return False
-
+            elif event.type == pygame.QUIT:
+                quitgame() 
+                
 if __name__=="__main__":
     askquestion()

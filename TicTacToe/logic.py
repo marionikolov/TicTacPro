@@ -15,24 +15,6 @@ USAGE:
 
 from main import *
 from settings import *
-
-def print(text,x=40,y=615):
-    """
-    FUNCTION NAME: print()
-    PARAMETERS: 3
-                text (string; mandatory): the output text intended to be shown to the user
-                x (integer; optional): the X coordinate of the top left corner of the text output
-                y (integer; optional): the Y coordinate of the top left corner of the text output              
-    FUNCTION DESCRIPTION:
-        Allows drawing text anywhere on the screen via the coordinates of the top left
-        corner of the text displayed. If no coordinates are passed in, it defaults to the bottom left of
-        the screen, which is designated as the display bar section.
-    """
-    pygame.draw.rect(screen, (0,0,0), (10,610,600,40), 0)
-    font = pygame.font.Font(None, 32)
-    textg = font.render(str(text), 4, (255, 255, 255))
-    screen.blit(textg, (x,y))
-    pygame.display.flip()
     
 def quitgame():
     """

@@ -12,6 +12,7 @@ from main import *
 from logic import *
 
 def offline2p(images):
+    pygame.event.clear()
     """runs the offline 2 player iteration of the game"""
     #sets up the screen for running the offline2p gamemode
     screen=pygame.display.set_mode((610, 650))
@@ -30,7 +31,7 @@ def offline2p(images):
         ev = pygame.event.get()
         for event in ev:
             #checks where you click
-            if event.type == pygame.MOUSEBUTTONUP:
+            if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 valid=validmove(pos,used)
                 if valid:
