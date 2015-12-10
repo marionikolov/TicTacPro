@@ -33,7 +33,7 @@ def askquestion():
     print(question[0],80,100)	# Display question.
     print(question[1],100,300)	# Display answers.
     print(question[2],350,300)
-    print(question[3],110,440)
+    print(question[3],100,440)
     print(question[4],350,440)    
     q=False
     choice = 0
