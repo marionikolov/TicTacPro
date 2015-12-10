@@ -124,10 +124,10 @@ if __name__=="__main__":
     os.environ['SDL_VIDEO_CENTERED'] = '1'
     sega=pygame.mixer.Sound("music/fx/sega.wav")
     sega.play()
-    screen = pygame.display.set_mode((200,200),pygame.NOFRAME)
+    screen = pygame.display.set_mode((480,480),pygame.NOFRAME)
     pygame.Surface([640,480], pygame.SRCALPHA, 32)
     splash=pygame.image.load("images/misc/splash.png")
-    screen.blit(splash,(-30,-200))
+    screen.blit(splash,(0,0))
     pygame.display.flip()
     time.sleep(2)
     
